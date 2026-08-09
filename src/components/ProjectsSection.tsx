@@ -12,7 +12,7 @@ interface Project {
   tags: string[];
   url: string;
   metrics: { label: string; value: string }[];
-  accent: "indigo" | "emerald" | "purple" | "amber" | "pink";
+  accent: "indigo" | "emerald" | "purple" | "amber" | "orange" | "pink";
 }
 
 const projects: Project[] = [
@@ -28,6 +28,19 @@ const projects: Project[] = [
       { label: "Delivered", value: "2 Mo" },
     ],
     accent: "indigo",
+  },
+  {
+    title: "SimplAssist",
+    logo: "/logos/simplassist-white.png",
+    description: "Customer communication software for small businesses that texts back missed calls, handles AI SMS and web chat, keeps leads in one inbox, and books appointments.",
+    tags: ["Software", "AI", "Development"],
+    url: "https://simplassist.com",
+    metrics: [
+      { label: "Coverage", value: "24/7" },
+      { label: "Inbox", value: "Unified" },
+      { label: "Status", value: "Live" },
+    ],
+    accent: "orange",
   },
   {
     title: "simplSEO",
@@ -205,6 +218,7 @@ const accentMap = {
   emerald: { dot: "bg-emerald-400", text: "text-emerald-300", bg: "bg-emerald-500/10", border: "border-emerald-400/30", line: "from-emerald-500 to-emerald-400" },
   purple: { dot: "bg-purple-400", text: "text-purple-300", bg: "bg-purple-500/10", border: "border-purple-400/30", line: "from-purple-500 to-purple-400" },
   amber: { dot: "bg-amber-400", text: "text-amber-300", bg: "bg-amber-500/10", border: "border-amber-400/30", line: "from-amber-500 to-amber-400" },
+  orange: { dot: "bg-orange-500", text: "text-orange-300", bg: "bg-orange-600/10", border: "border-orange-500/30", line: "from-orange-600 to-orange-500" },
   pink: { dot: "bg-pink-400", text: "text-pink-300", bg: "bg-pink-500/10", border: "border-pink-400/30", line: "from-pink-500 to-pink-400" },
 };
 

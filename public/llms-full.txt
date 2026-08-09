@@ -80,6 +80,7 @@ Bryan follows a four-step process for every project:
 
 ## Apps and Side Projects
 Bryan also builds and publishes apps, including:
+- SimplAssist: Customer communication software that texts back missed calls, handles AI conversations across SMS and web chat, organizes leads in one inbox, and books appointments. https://simplassist.com
 - simplSEO: An SEO management platform for tracking keywords, monitoring rankings, and generating reports.
 - Other projects viewable at: https://bryandevelops.com/projects
 

@@ -126,14 +126,14 @@ export default function HeroSection() {
                 <h3 className="text-white text-sm sm:text-sm lg:text-lg font-bold mb-1 sm:mb-1 lg:mb-1.5 relative z-10">Drive &amp; Shine</h3>
                 <div className="flex items-center gap-1.5 lg:gap-2 mb-2 sm:mb-1.5 lg:mb-2.5 flex-wrap">
                   <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">Web Design</span>
-                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">Development</span>
+                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">SEO</span>
                 </div>
                 <p className="text-neutral-300 text-xs sm:text-[10px] lg:text-sm leading-relaxed mb-2.5 sm:mb-2 lg:mb-3 relative z-10">
                 Modern redesign with custom forms and full mobile optimization.
                 </p>
                 <div className="flex items-center gap-4 sm:gap-3 lg:gap-5 pt-3 sm:pt-2 lg:pt-3 border-t border-white/10">
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">100%</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Responsive</p></div>
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">98</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Speed Score</p></div>
+                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">3x</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Traffic</p></div>
+                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">Top 5</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Google</p></div>
                   <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">2 Mo</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Delivered</p></div>
                 </div>
               </div>
@@ -141,26 +141,28 @@ export default function HeroSection() {
             </Link>
             </FadeIn>
 
-            {/* Featured Software — simplSEO */}
+            {/* Featured Software — SimplAssist */}
             <FadeIn delay={400}>
-            <Link href="https://simplseo-io.vercel.app" target="_blank" rel="noopener noreferrer" className="group block w-64 sm:w-48 lg:w-64 min-w-0">
+            <Link href="https://simplassist.com" target="_blank" rel="noopener noreferrer" className="group block w-64 sm:w-48 lg:w-64 min-w-0">
               <div className="relative">
-                <div className="absolute -top-2 left-2 sm:-top-3 sm:left-3 lg:-top-3.5 lg:left-4 z-30 inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 lg:px-3 lg:py-1.5 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-[10px] sm:text-[9px] lg:text-[11px] font-semibold text-emerald-200 tracking-wider uppercase">
-                  <span className="w-0.5 h-0.5 sm:w-1 sm:h-1 lg:w-1.5 lg:h-1.5 rounded-full bg-emerald-400 hidden sm:block"></span>
+                <div className="absolute -top-2 left-2 sm:-top-3 sm:left-3 lg:-top-3.5 lg:left-4 z-30 inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 lg:px-3 lg:py-1.5 rounded-full bg-orange-500/20 backdrop-blur-md border border-orange-400/30 text-[10px] sm:text-[9px] lg:text-[11px] font-semibold text-orange-200 tracking-wider uppercase">
+                  <span className="w-0.5 h-0.5 sm:w-1 sm:h-1 lg:w-1.5 lg:h-1.5 rounded-full bg-orange-400 hidden sm:block"></span>
                   Featured Software
                 </div>
                 <div className="relative p-4 pt-5 sm:p-3.5 sm:pt-5 lg:p-5 lg:pt-7 rounded-xl sm:rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)] group-hover:border-white/25 group-hover:bg-white/[0.09] transition-all duration-300">
                 <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-bl from-white/[0.08] to-transparent rounded-bl-full pointer-events-none"></div>
-                <h3 className="text-white text-sm sm:text-sm lg:text-lg font-bold mb-1 sm:mb-1 lg:mb-1.5 relative z-10">simplSEO</h3>
+                <h3 className="text-white text-sm sm:text-sm lg:text-lg font-bold mb-1 sm:mb-1 lg:mb-1.5 relative z-10">SimplAssist</h3>
                 <div className="flex items-center gap-1.5 lg:gap-2 mb-2 sm:mb-1.5 lg:mb-2.5">
                   <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">Software</span>
+                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">AI</span>
                 </div>
                 <p className="text-neutral-300 text-xs sm:text-[10px] lg:text-sm leading-relaxed mb-2.5 sm:mb-2 lg:mb-3 relative z-10">
-                  Affordable SEO tool for small businesses.
+                  Texts back missed calls, chats 24/7, and keeps every lead in one inbox.
                 </p>
                 <div className="flex items-center gap-4 sm:gap-3 lg:gap-5 pt-3 sm:pt-2 lg:pt-3 border-t border-white/10">
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">SEO</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Software</p></div>
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">Custom</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Built</p></div>
+                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">24/7</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Coverage</p></div>
+                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">1</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Inbox</p></div>
+                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">Live</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Now</p></div>
                 </div>
               </div>
               </div>

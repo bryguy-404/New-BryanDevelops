@@ -324,35 +324,43 @@ export default function SoftwarePageContent() {
         </div>
       </section>
 
-      {/* ========== COMING SOON ========== */}
+      {/* ========== FEATURED: SimplAssist ========== */}
       <section className="relative py-20 sm:py-24 bg-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <FadeIn>
-            <div className="relative rounded-2xl bg-gradient-to-br from-indigo-500/[0.08] to-purple-500/[0.05] border border-indigo-500/15 p-8 sm:p-12 overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full filter blur-[80px] pointer-events-none" />
-              <div className="relative z-10 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-400/20 mb-5">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-400" />
-                  </span>
-                  <span className="text-indigo-300 text-xs font-semibold tracking-wider uppercase">Coming Soon</span>
+            <div className="relative rounded-2xl bg-gradient-to-br from-orange-500/[0.10] to-amber-500/[0.04] border border-orange-500/20 p-8 sm:p-12 overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500/10 rounded-full filter blur-[80px] pointer-events-none" />
+              <div className="relative z-10 max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/15 border border-orange-400/25 mb-5">
+                  <span className="w-2 h-2 rounded-full bg-orange-400" />
+                  <span className="text-orange-200 text-xs font-semibold tracking-wider uppercase">Now Live</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                  The All-in-One AI Business Platform
+                  SimplAssist — Never Miss a Customer Again
                 </h3>
                 <p className="text-neutral-400 leading-relaxed mb-6">
-                  One platform to add AI chatbots to your website, automatically text back missed calls,
-                  and collect more reviews, all managed from a single dashboard. Built for businesses in Indiana
-                  and beyond that want to capture every lead and never miss an opportunity.
+                  Customer communication software built for small businesses. SimplAssist automatically texts
+                  back missed callers, chats with website visitors 24/7, keeps every lead in one shared inbox,
+                  and can book appointments through Google Calendar.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {["AI Chatbots", "Missed Call Text-Back", "Review Management", "Lead Dashboard"].map((f) => (
+                <div className="flex flex-wrap gap-2 mb-7">
+                  {["Automatic Missed-Call Texts", "AI SMS & Web Chat", "Unified Lead Inbox", "Appointment Booking"].map((f) => (
                     <span key={f} className="px-3 py-1 text-xs font-medium rounded-full bg-white/[0.06] text-neutral-300 border border-white/10">
                       {f}
                     </span>
                   ))}
                 </div>
+                <Link
+                  href="https://simplassist.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500/20 border border-orange-400/30 text-orange-100 font-semibold text-sm hover:bg-orange-500/30 transition-colors"
+                >
+                  Explore SimplAssist
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </Link>
               </div>
             </div>
           </FadeIn>

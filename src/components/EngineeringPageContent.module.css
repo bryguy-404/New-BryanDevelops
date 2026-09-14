@@ -1,0 +1,15 @@
+@media (min-width: 1024px) {
+  .portrait {
+    /* Account for the original image's transparent left half while fading the shoulders. */
+    mask-image:
+      linear-gradient(
+        to right,
+        transparent 48%,
+        black 62%,
+        black 89%,
+        transparent
+      ),
+      linear-gradient(to top, transparent, black 30%);
+    mask-composite: intersect;
+  }
+}

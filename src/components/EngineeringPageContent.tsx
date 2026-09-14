@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import SimplAssistFlow from "./SimplAssistFlow";
+import styles from "./EngineeringPageContent.module.css";
 
 const resumeUrl = "/resume/Bryan-Arambula-Resume.pdf";
 const githubUrl = "https://github.com/bryguy-404";
@@ -111,7 +112,7 @@ export default function EngineeringPageContent({
             className="pointer-events-none absolute right-0 top-20 h-[38rem] w-[38rem] rounded-full bg-indigo-600/15 blur-[150px]"
           />
           <div className={container}>
-            <div className="grid items-center gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-10">
+            <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
               <div className="relative z-10 pb-7 sm:pb-12">
                 <p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-300">
                   <span className="h-px w-8 bg-indigo-400" />
@@ -175,45 +176,25 @@ export default function EngineeringPageContent({
                   </a>
                 </div>
               </div>
-              <div className="relative mx-auto h-[270px] w-full max-w-lg overflow-hidden sm:h-[400px] lg:h-[510px] lg:self-end">
-                <div
-                  aria-hidden="true"
-                  className="absolute bottom-8 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full border border-indigo-300/10 bg-indigo-500/5 sm:h-96 sm:w-96"
-                />
+              <div className="relative mx-auto h-[320px] w-full max-w-xl overflow-hidden sm:h-[440px] lg:h-[580px] lg:self-end lg:overflow-visible">
+                {/* Center the visible portrait within the source image's transparent padding. */}
                 <Image
                   src="/Bryan-Develops.png"
                   alt="Bryan Arambula"
-                  fill
+                  width={1920}
+                  height={938}
                   priority
-                  sizes="(max-width: 1023px) 512px, 40vw"
-                  className="object-cover object-right-bottom"
+                  sizes="(min-width: 1024px) 1600px, (min-width: 640px) 1250px, 900px"
+                  className={`${styles.portrait} pointer-events-none absolute bottom-0 left-1/2 h-[134.6%] w-auto max-w-none -translate-x-[75.35%]`}
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+                  className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent lg:hidden"
                 />
-                <div className="absolute inset-x-0 bottom-8 flex justify-center">
-                  <p className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-black/60 px-4 py-2.5 text-xs text-neutral-300 backdrop-blur-md">
-                    <svg
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5 text-indigo-300"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                    >
-                      <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" />
-                      <circle cx="12" cy="10" r="2.5" />
-                    </svg>
-                    South Bend, Indiana
-                  </p>
-                </div>
               </div>
             </div>
             <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:py-7">
-              <p className="font-medium uppercase tracking-[0.16em] text-neutral-500">
-                Selected engineering work
-              </p>
+              <p className="text-neutral-400">Based in South Bend, Indiana</p>
               <p className="text-neutral-400">
                 Full-stack applications{" "}
                 <span className="mx-3 text-neutral-700">/</span> Applied AI{" "}
@@ -412,44 +393,18 @@ export default function EngineeringPageContent({
             </FadeIn>
             <div className="grid gap-6 md:grid-cols-2">
               <article className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.025)]">
-                <div
-                  className="flex min-h-32 items-center justify-center gap-2 border-b border-emerald-100 bg-emerald-50/60 px-5 py-8 sm:gap-4"
-                  aria-label="Search data to insights to recommendations"
-                >
-                  <span className="rounded-xl border border-emerald-200/70 bg-white px-3 py-3 text-xs font-medium text-emerald-800">
-                    Search data
-                  </span>
-                  <span className="text-emerald-500">
-                    <Arrow />
-                  </span>
-                  <span className="rounded-xl border border-emerald-200/70 bg-white px-3 py-3 text-xs font-medium text-emerald-800">
-                    Insights
-                  </span>
-                  <span className="text-emerald-500">
-                    <Arrow />
-                  </span>
-                  <span className="rounded-xl border border-emerald-200/70 bg-white px-3 py-3 text-xs font-medium text-emerald-800">
-                    Next steps
-                  </span>
-                </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-500">
-                    02 / Independent product
-                  </p>
-                  <div className="mb-4 flex items-center gap-3">
-                    <span className="relative h-[34px] w-[34px]">
-                      <Image
-                        src="/logos/simplseo.png"
-                        alt=""
-                        fill
-                        sizes="34px"
-                        className="object-contain"
-                      />
+                  <div className="mb-7 flex items-center justify-between border-b border-neutral-200 pb-4">
+                    <p className="text-xs font-medium text-neutral-500">
+                      Independent product
+                    </p>
+                    <span className="font-mono text-xs text-neutral-400">
+                      02
                     </span>
-                    <h3 className="text-2xl font-bold tracking-tight">
-                      SimplSEO
-                    </h3>
                   </div>
+                  <h3 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl">
+                    SimplSEO<span className="text-emerald-600">.</span>
+                  </h3>
                   <p className="mb-4 text-sm leading-relaxed text-neutral-600">
                     Turns Google Search Console data into actionable
                     recommendations for small businesses: low-CTR pages, ranking
@@ -484,34 +439,21 @@ export default function EngineeringPageContent({
                 </div>
               </article>
               <article className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.025)]">
-                <div
-                  className="flex min-h-32 items-center justify-center gap-2 border-b border-indigo-100 bg-indigo-50/60 px-5 py-8 sm:gap-4"
-                  aria-label="Survey to webhook to SMS follow-up"
-                >
-                  <span className="rounded-xl border border-indigo-200/70 bg-white px-3 py-3 text-xs font-medium text-indigo-800">
-                    Survey
-                  </span>
-                  <span className="text-indigo-500">
-                    <Arrow />
-                  </span>
-                  <span className="rounded-xl border border-indigo-200/70 bg-white px-3 py-3 text-xs font-medium text-indigo-800">
-                    Webhook
-                  </span>
-                  <span className="text-indigo-500">
-                    <Arrow />
-                  </span>
-                  <span className="rounded-xl border border-indigo-200/70 bg-white px-3 py-3 text-xs font-medium text-indigo-800">
-                    SMS follow-up
-                  </span>
-                </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-500">
-                    03 / Agency &amp; client work
-                  </p>
-                  <h3 className="mb-4 text-2xl font-bold tracking-tight">
+                  <div className="mb-7 flex items-center justify-between border-b border-neutral-200 pb-4">
+                    <p className="text-xs font-medium text-neutral-500">
+                      Agency &amp; client work
+                    </p>
+                    <span className="font-mono text-xs text-neutral-400">
+                      03
+                    </span>
+                  </div>
+                  <h3 className="mb-5 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl">
                     Customer feedback
                     <br />
-                    &amp; review automation
+                    <span className="text-neutral-500">
+                      &amp; review automation.
+                    </span>
                   </h3>
                   <p className="mb-4 text-sm leading-relaxed text-neutral-600">
                     Connects survey responses to SMS follow-up, stored feedback,

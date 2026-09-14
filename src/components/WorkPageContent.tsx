@@ -94,6 +94,48 @@ const projects: Project[] = [
     accent: "indigo",
   },
   {
+    title: "Wyckoff Consulting",
+    logo: "/logos/wyckoff-consulting-icon.png",
+    description:
+      "Executive marketing consulting website showcasing fractional CMO services, growth strategy, and leadership experience.",
+    tags: ["Web Design", "Development"],
+    category: ["Websites"],
+    url: "https://www.wyckoffconsulting.com/",
+    metrics: [
+      { label: "Focus", value: "Strategy" },
+      { label: "Services", value: "CMO" },
+    ],
+    accent: "emerald",
+  },
+  {
+    title: "Big Rapids Products",
+    logo: "/logos/big-rapids-products.png",
+    description:
+      "Manufacturing website showcasing precision metal stamping, robotic welding, and engineered assemblies across five facilities.",
+    tags: ["Web Design", "Development"],
+    category: ["Websites"],
+    url: "https://www.brproducts.com/",
+    metrics: [
+      { label: "Facilities", value: "5" },
+      { label: "Industry", value: "Manufacturing" },
+    ],
+    accent: "orange",
+  },
+  {
+    title: "Great Lakes Solar",
+    logo: "/logos/great-lakes-solar.png",
+    description:
+      "Solar energy website featuring residential solar, battery backup, and home improvement services across the Great Lakes region.",
+    tags: ["Web Design", "Development"],
+    category: ["Websites"],
+    url: "https://greatlakessolarpower.com/",
+    metrics: [
+      { label: "Energy", value: "Solar" },
+      { label: "Backup", value: "Battery" },
+    ],
+    accent: "amber",
+  },
+  {
     title: "Ananta Breathwork",
     logo: "/logos/anantabreathwork.png",
     description:
@@ -380,7 +422,7 @@ export default function WorkPageContent() {
                       alt={`${project.title} logo`}
                       width={120}
                       height={48}
-                      className="object-contain max-h-12"
+                      className="object-contain w-auto max-w-[120px] max-h-12"
                     />
                   ) : (
                     <span className={`text-2xl font-bold ${c.tagText} tracking-tight`}>

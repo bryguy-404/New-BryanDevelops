@@ -55,6 +55,56 @@ const projects: Project[] = [
     accent: "emerald",
   },
   {
+    title: "Rise'n Roll Bakery",
+    logo: "/logos/risenroll-white.png",
+    description: "Amish-style bakery website featuring fresh-baked goods, product catalog, and locations across Indiana.",
+    tags: ["Web Design", "Branding"],
+    url: "https://risenroll.com",
+    metrics: [
+      { label: "Products", value: "Fresh" },
+      { label: "Locations", value: "Multi" },
+    ],
+    accent: "amber",
+  },
+  {
+    title: "United Way of St. Joseph County",
+    logo: "/logos/unitedway.png",
+    description: "Nonprofit website for community impact in South Bend. Education, health, and financial stability programs.",
+    tags: ["Web Design", "Development"],
+    url: "https://uwsjc.org",
+    metrics: [
+      { label: "100+", value: "Years" },
+      { label: "Impact", value: "Local" },
+    ],
+    accent: "indigo",
+  },
+  {
+    title: "Big Rapids Products",
+    logo: "/logos/big-rapids-products-icon.png",
+    description:
+      "Manufacturing website showcasing precision metal stamping, robotic welding, and engineered assemblies across five facilities.",
+    tags: ["Web Design", "Development"],
+    url: "https://www.brproducts.com/",
+    metrics: [
+      { label: "Facilities", value: "5" },
+      { label: "Industry", value: "Manufacturing" },
+    ],
+    accent: "orange",
+  },
+  {
+    title: "Wyckoff Consulting",
+    logo: "/logos/wyckoff-consulting-icon.png",
+    description:
+      "Executive marketing consulting website showcasing fractional CMO services, growth strategy, and leadership experience.",
+    tags: ["Web Design", "Development"],
+    url: "https://www.wyckoffconsulting.com/",
+    metrics: [
+      { label: "Focus", value: "Strategy" },
+      { label: "Services", value: "CMO" },
+    ],
+    accent: "emerald",
+  },
+  {
     title: "Ananta Breathwork",
     logo: "/logos/anantabreathwork.png",
     description: "Wellness brand website with booking integration and calming visual identity.",
@@ -128,18 +178,6 @@ const projects: Project[] = [
     accent: "purple",
   },
   {
-    title: "Rise'n Roll Bakery",
-    logo: "/logos/risenroll-white.png",
-    description: "Amish-style bakery website featuring fresh-baked goods, product catalog, and locations across Indiana.",
-    tags: ["Web Design", "Branding"],
-    url: "https://risenroll.com",
-    metrics: [
-      { label: "Products", value: "Fresh" },
-      { label: "Locations", value: "Multi" },
-    ],
-    accent: "amber",
-  },
-  {
     title: "Middletown Family Dentistry",
     logo: "/logos/middletowndentistry.jpg",
     description: "Trusted dental care website for a family dentist in Middletown, IN. Services, team, and online booking.",
@@ -152,16 +190,17 @@ const projects: Project[] = [
     accent: "pink",
   },
   {
-    title: "United Way of St. Joseph County",
-    logo: "/logos/unitedway.png",
-    description: "Nonprofit website for community impact in South Bend. Education, health, and financial stability programs.",
+    title: "Great Lakes Solar",
+    logo: "/logos/great-lakes-solar-icon.png",
+    description:
+      "Solar energy website featuring residential solar, battery backup, and home improvement services across the Great Lakes region.",
     tags: ["Web Design", "Development"],
-    url: "https://uwsjc.org",
+    url: "https://greatlakessolarpower.com/",
     metrics: [
-      { label: "100+", value: "Years" },
-      { label: "Impact", value: "Local" },
+      { label: "Energy", value: "Solar" },
+      { label: "Backup", value: "Battery" },
     ],
-    accent: "indigo",
+    accent: "amber",
   },
   {
     title: "Brilliant Solar Solutions",

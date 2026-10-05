@@ -72,7 +72,6 @@ const jsonLd = {
     "Squarespace",
     "Wix",
     "E-Commerce",
-    "SEO",
     "Responsive Design",
   ],
 };

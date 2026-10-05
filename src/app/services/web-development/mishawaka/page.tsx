@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Web Design & Development in Mishawaka, IN | Bryan Develops",
   description:
-    "Professional web design and development for Mishawaka, Indiana businesses. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, SEO-ready, and built to convert. Free consultation.",
+    "Professional web design and development for Mishawaka, Indiana businesses. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, fast-loading, and built to convert. Free consultation.",
   keywords: [
     "web design Mishawaka",
     "web developer Mishawaka Indiana",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Web Design & Development in Mishawaka | Bryan Develops",
     description:
-      "Professional websites for Mishawaka businesses. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, SEO-ready, and affordable.",
+      "Professional websites for Mishawaka businesses. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, fast-loading, and affordable.",
     type: "website",
   },
 };
@@ -37,7 +37,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Bryan Develops, Web Design & Development in Mishawaka",
   description:
-    "Professional web design and development for businesses in Mishawaka, St. Joseph County, and the Michiana area. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with SEO and training included.",
+    "Professional web design and development for businesses in Mishawaka, St. Joseph County, and the Michiana area. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with responsive layouts and training included.",
   url: "https://bryandevelops.com/services/web-development/mishawaka",
   areaServed: [
     { "@type": "City", name: "Mishawaka", addressRegion: "IN" },
@@ -71,7 +71,6 @@ const jsonLd = {
     "Squarespace",
     "Wix",
     "E-Commerce",
-    "SEO",
     "Responsive Design",
   ],
 };

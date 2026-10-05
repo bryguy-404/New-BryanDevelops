@@ -94,8 +94,8 @@ export default function AboutPageContent() {
                   </span>
                 </h1>
                 <p className="text-neutral-500 text-lg sm:text-xl max-w-lg leading-relaxed mb-6">
-                  I build websites, custom software, and SEO strategies that help
-                  businesses grow. Based in South Bend, working with clients locally
+                  I build websites and custom software that help
+                  businesses serve customers and simplify their work. Based in South Bend, working with clients locally
                   and across the country.
                 </p>
                 <p className="text-neutral-400 text-base leading-relaxed">
@@ -190,7 +190,7 @@ export default function AboutPageContent() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-neutral-900 font-semibold text-sm">Websites, Software &amp; SEO</p>
+                      <p className="text-neutral-900 font-semibold text-sm">Websites &amp; Custom Software</p>
                       <p className="text-neutral-400 text-sm">If it lives on the internet, I can probably build it</p>
                     </div>
                   </div>
@@ -336,7 +336,7 @@ export default function AboutPageContent() {
                 Ready to Build Something Great?
               </h2>
               <p className="text-neutral-500 text-lg mb-8">
-                Whether you need a website, custom software, or an SEO strategy.
+                Whether you need a website, custom software, or help improving an existing application.
                 I am here to help. Based in South Bend, serving Mishawaka, Elkhart,
                 Fort Wayne, and clients nationwide. Free consultation, no strings attached.
               </p>

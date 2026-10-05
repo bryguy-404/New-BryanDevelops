@@ -143,9 +143,9 @@ const painPoints = [
       "This is one of the most common things I hear from business owners. They paid for a site, the developer disappeared, and now they can't even change their phone number. I build sites you can actually manage, and I teach you how.",
   },
   {
-    question: "You're not showing up on Google and losing customers to competitors?",
+    question: "Is your website slow, confusing, or difficult to use on a phone?",
     answer:
-      "A beautiful website means nothing if nobody can find it. Every site I build is optimized for search engines from day one. Proper structure, fast loading, mobile-friendly, and keyword-focused.",
+      "A website should be easy for your customers to use. I build clear page layouts, improve loading performance, and make forms and navigation work across phones, tablets, and desktops.",
   },
   {
     question: "You need an online store but don't know where to start?",
@@ -186,8 +186,8 @@ const services = [
     ),
   },
   {
-    title: "SEO-Ready Builds",
-    desc: "Every website I build is structured for Google from the start — clean code, fast load times, proper headings, meta tags, and mobile optimization baked in.",
+    title: "Fast, Well-Structured Websites",
+    desc: "Clean code, clear page structure, descriptive page titles, and responsive layouts make your website easier to use and maintain.",
     accent: "pink",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,7 +239,7 @@ const processSteps = [
   {
     num: "03",
     title: "Build",
-    desc: "Your site gets built on the platform that fits best: WordPress, Shopify, Squarespace, Wix, or custom code. Fast, clean, and SEO-ready.",
+    desc: "Your site gets built on the platform that fits best: WordPress, Shopify, Squarespace, Wix, or custom code. The focus is reliable functionality, clear design, and straightforward maintenance.",
   },
   {
     num: "04",
@@ -472,7 +472,7 @@ export default function WebDevPageContent() {
                     { label: "Adding new pages & blog posts", done: true },
                     { label: "Managing your contact form", done: true },
                     { label: "Updating your business hours", done: true },
-                    { label: "Basic SEO tips for your site", done: false },
+                    { label: "Updating page titles and website content", done: false },
                     { label: "Connecting Google Analytics", done: false },
                   ].map((task) => (
                     <div key={task.label} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-100">
@@ -513,7 +513,7 @@ export default function WebDevPageContent() {
                     {[
                       "Custom design (not a template)",
                       "Mobile-friendly & fast",
-                      "SEO basics included",
+                      "Clear page structure included",
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-2 text-neutral-700 text-sm">
                         <svg className="w-4 h-4 text-indigo-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -598,7 +598,7 @@ export default function WebDevPageContent() {
               </h2>
               <p className="text-neutral-500 text-lg mb-8">
                 Whether you&apos;re in Indiana or anywhere in the country. Let&apos;s
-                build a site that looks professional, ranks on Google, and you can actually manage yourself.
+                build a site that looks professional, works well on every device, and you can manage with confidence.
                 Free consultation, no strings attached.
               </p>
               <div className="flex flex-wrap justify-center gap-3">

@@ -15,9 +15,9 @@ const faqs = [
       "Most websites are completed within 4 to 8 weeks, depending on the project size. Simple landing pages can be done in as little as 2 weeks, while more complex sites with custom software or e-commerce features may take 8 to 12 weeks. You'll have access to a live development server to track progress the entire time.",
   },
   {
-    question: "Do you offer SEO services?",
+    question: "Can you improve an existing website?",
     answer:
-      "Yes! SEO is built into every website I create. I also offer standalone SEO optimization packages that include keyword research, on-page SEO, technical SEO audits, local SEO for Google Maps, and ongoing rank tracking. My goal is to get your business on the first page of Google.",
+      "Yes. I can redesign an outdated site, improve its mobile layout and loading speed, fix broken features, or add new functionality. We will agree on the scope before work begins.",
   },
   {
     question: "Can you build custom software or web applications?",
@@ -42,7 +42,7 @@ const faqs = [
   {
     question: "Why hire a freelance web developer vs. a web design agency?",
     answer:
-      "I combine design, development, SEO, and software engineering into one service. Most agencies outsource pieces of the work. I handle everything personally. That means faster turnaround, better communication, and a cohesive final product. Plus, every project includes SEO optimization from day one.",
+      "I bring website design, development, and software engineering together. You work directly with me from the first conversation through launch and support, with clear communication and a scope tailored to your project.",
   },
 ];
 

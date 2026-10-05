@@ -6,7 +6,7 @@ import Link from "next/link";
 import FloatingDots from "./CursorDots";
 import FadeIn from "./FadeIn";
 
-const cyclingWords = [ "Software","Web Design", "SEO", "Development"];
+const cyclingWords = ["Software", "Web Design", "Development"];
 
 const trustedBy = [
   "Ananta Breathwork",
@@ -73,7 +73,7 @@ export default function HeroSection() {
           <div className="flex flex-col gap-2 sm:gap-3 lg:gap-6 pt-2 sm:pt-4 lg:pt-0">
             <h1 className="text-[clamp(2.2rem,7vw,5rem)] font-bold leading-[1.1] tracking-tight">
               <span className="sr-only">
-                Web Design, Custom Software &amp; SEO — South Bend, Indiana
+                Web Design &amp; Custom Software — South Bend, Indiana
               </span>
               <span aria-hidden="true">
                 <span className="relative block h-[1.25em]">
@@ -92,7 +92,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-sm lg:text-lg text-neutral-300 max-w-md leading-relaxed">
-              Custom websites, SEO strategies, and software built for businesses in South Bend and across the country.{" "}
+              Custom websites and software built for businesses in South Bend and across the country.{" "}
               <span className="text-white"> <br></br>
                 Need affordable solutions? That&apos;s where I come in.
               </span>

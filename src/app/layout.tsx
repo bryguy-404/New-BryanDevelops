@@ -8,23 +8,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Bryan Develops | Web Design, SEO & Custom Software — South Bend, IN",
+  title: "Bryan Develops | Websites & Custom Software — South Bend, IN",
   description:
-    "Custom web design, SEO optimization, and software development by Bryan Develops. Helping businesses in South Bend and nationwide with websites, search rankings, and custom apps that drive real results.",
+    "Custom websites and software by Bryan Arambula in South Bend, Indiana. Website design, web applications, integrations, and ongoing support for businesses nationwide.",
   keywords: [
     "web design south bend",
-    "SEO south bend",
     "custom software development",
     "web developer indiana",
     "small business website",
-    "SEO optimization",
     "custom web apps",
     "Bryan Develops",
   ],
   openGraph: {
-    title: "Bryan Develops | Web Design, SEO & Custom Software",
+    title: "Bryan Develops | Websites & Custom Software",
     description:
-      "Custom websites, SEO strategies, and software built for businesses. Standing out online? That's where I come in.",
+      "Websites, business applications, and integrations built by Bryan Arambula. Based in South Bend, Indiana, working with businesses nationwide.",
     type: "website",
     locale: "en_US",
     siteName: "Bryan Develops",
@@ -37,14 +35,13 @@ const jsonLd = {
   name: "Bryan Develops",
   url: "https://bryandevelops.com",
   description:
-    "Custom web design, SEO optimization, and software development helping businesses stand out online.",
+    "Website design and custom software development for businesses in South Bend and nationwide.",
   areaServed: [
     { "@type": "City", name: "South Bend", containedInPlace: { "@type": "State", name: "Indiana" } },
     { "@type": "Country", name: "United States" },
   ],
   serviceType: [
     "Web Design",
-    "SEO Optimization",
     "Custom Software Development",
     "Web Development",
     "Branding",

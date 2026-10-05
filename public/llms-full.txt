@@ -1,6 +1,6 @@
 # Bryan Develops - Full Documentation
 
-> Freelance web developer and software engineer based in South Bend, Indiana. I help small businesses and startups build websites, custom software, and improve their SEO. I work with clients locally in the Michiana area and remotely across the country.
+> Freelance web developer and software engineer based in South Bend, Indiana. I help small businesses and startups build websites and custom software. I work with clients locally in the Michiana area and remotely across the country.
 
 ## About Bryan Arambula
 Bryan Arambula is a freelance developer operating as Bryan Develops out of South Bend, Indiana. He works directly with small businesses, startups, and entrepreneurs to build digital tools that solve real problems. No agencies, no jargon, just straightforward work with clear communication. Clients own everything: the design, the code, and the content.
@@ -8,14 +8,14 @@ Bryan Arambula is a freelance developer operating as Bryan Develops out of South
 ## Services
 
 ### Web Development
-Professional websites built on the platform that fits the business: WordPress, Shopify, Squarespace, Wix, or fully custom code. Every site is mobile-friendly, SEO-ready, and comes with training so the client can manage it themselves. Bryan handles the full process from strategy through launch and provides ongoing support.
+Professional websites built on the platform that fits the business: WordPress, Shopify, Squarespace, Wix, or fully custom code. Every site is mobile-friendly, fast-loading, and comes with training so the client can manage it themselves. Bryan handles the full process from strategy through launch and provides ongoing support.
 
 URL: https://bryandevelops.com/services/web-development
 
 Key offerings:
 - Platform-flexible: WordPress, Shopify, Squarespace, Wix, or custom
 - Mobile-responsive design
-- SEO foundations built in
+- Clear page structure and responsive layouts
 - Client training included
 - Ongoing support available
 
@@ -49,28 +49,6 @@ Location-specific pages:
 - Goshen, IN: https://bryandevelops.com/services/software/goshen
 - Niles, MI: https://bryandevelops.com/services/software/niles
 
-### SEO Services
-Search engine optimization to help businesses get found on Google by the people searching for what they offer. Services include keyword research, on-page optimization, local SEO, technical audits, and ongoing strategy to grow organic traffic.
-
-URL: https://bryandevelops.com/services/seo
-
-Key offerings:
-- Keyword research and strategy
-- On-page optimization (titles, headings, content, images)
-- Local SEO and Google Business Profile optimization
-- Technical SEO audits
-- Monthly reporting and analytics
-- Content strategy guidance
-
-Location-specific pages:
-- South Bend, IN: https://bryandevelops.com/services/seo/south-bend
-- Fort Wayne, IN: https://bryandevelops.com/services/seo/fort-wayne
-- Warsaw, IN: https://bryandevelops.com/services/seo/warsaw
-- Mishawaka, IN: https://bryandevelops.com/services/seo/mishawaka
-- LaPorte, IN: https://bryandevelops.com/services/seo/laporte
-- Goshen, IN: https://bryandevelops.com/services/seo/goshen
-- Niles, MI: https://bryandevelops.com/services/seo/niles
-
 ## Process
 Bryan follows a four-step process for every project:
 1. Strategy: Understand the business, goals, and audience. Define what success looks like, in plain English.
@@ -87,13 +65,13 @@ Bryan also builds and publishes apps, including:
 ## Areas Served
 - Primary: South Bend, IN (headquarters)
 - Michiana area: Mishawaka, Elkhart, Granger, IN
-- South Bend, IN (headquarters, dedicated landing pages for all 3 services)
-- Fort Wayne, IN (dedicated software, web development, and SEO pages)
-- Warsaw, IN (dedicated software, web development, and SEO pages)
-- Mishawaka, IN (dedicated software, web development, and SEO pages)
-- LaPorte, IN (dedicated software, web development, and SEO pages)
-- Goshen, IN (dedicated software, web development, and SEO pages)
-- Niles, MI (dedicated software, web development, and SEO pages)
+- South Bend, IN (headquarters, dedicated landing pages for website and software services)
+- Fort Wayne, IN (dedicated software and web development pages)
+- Warsaw, IN (dedicated software and web development pages)
+- Mishawaka, IN (dedicated software and web development pages)
+- LaPorte, IN (dedicated software and web development pages)
+- Goshen, IN (dedicated software and web development pages)
+- Niles, MI (dedicated software and web development pages)
 - Remote clients nationwide
 
 ## Contact
@@ -120,14 +98,6 @@ Bryan also builds and publishes apps, including:
 - Software - LaPorte: https://bryandevelops.com/services/software/laporte
 - Software - Goshen: https://bryandevelops.com/services/software/goshen
 - Software - Niles: https://bryandevelops.com/services/software/niles
-- SEO Services: https://bryandevelops.com/services/seo
-- SEO Services - South Bend: https://bryandevelops.com/services/seo/south-bend
-- SEO Services - Fort Wayne: https://bryandevelops.com/services/seo/fort-wayne
-- SEO Services - Warsaw: https://bryandevelops.com/services/seo/warsaw
-- SEO Services - Mishawaka: https://bryandevelops.com/services/seo/mishawaka
-- SEO Services - LaPorte: https://bryandevelops.com/services/seo/laporte
-- SEO Services - Goshen: https://bryandevelops.com/services/seo/goshen
-- SEO Services - Niles: https://bryandevelops.com/services/seo/niles
 - Projects: https://bryandevelops.com/projects
 - About: https://bryandevelops.com/about
 - Contact: https://bryandevelops.com/contact

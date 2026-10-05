@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Small Business Web Design & Development in LaPorte, IN | Bryan Develops",
   description:
-    "Professional web design and development for small businesses in LaPorte, Indiana. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, SEO-ready, and built to convert. Free consultation.",
+    "Professional web design and development for small businesses in LaPorte, Indiana. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, fast-loading, and built to convert. Free consultation.",
   keywords: [
     "web design LaPorte",
     "web developer LaPorte Indiana",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Small Business Web Design & Development in LaPorte | Bryan Develops",
     description:
-      "Professional websites for small businesses in LaPorte. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, SEO-ready, and affordable.",
+      "Professional websites for small businesses in LaPorte. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, fast-loading, and affordable.",
     type: "website",
   },
 };
@@ -37,7 +37,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Bryan Develops, Web Design & Development in LaPorte",
   description:
-    "Professional web design and development for businesses in LaPorte, LaPorte County, and northwest Indiana. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with SEO and training included.",
+    "Professional web design and development for businesses in LaPorte, LaPorte County, and northwest Indiana. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with responsive layouts and training included.",
   url: "https://bryandevelops.com/services/web-development/laporte",
   areaServed: [
     { "@type": "City", name: "LaPorte", addressRegion: "IN" },
@@ -71,7 +71,6 @@ const jsonLd = {
     "Squarespace",
     "Wix",
     "E-Commerce",
-    "SEO",
     "Responsive Design",
   ],
 };

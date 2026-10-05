@@ -60,17 +60,6 @@ const solutions = [
     accent: "amber",
   },
   {
-    title: "SEO & Marketing Software",
-    description:
-      "Custom tools for keyword tracking, site audits, and performance reporting. Built for agencies and businesses that take their online presence seriously.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    ),
-    accent: "pink",
-  },
-  {
     title: "Integrations & APIs",
     description:
       "Connect the tools you already use. I build custom integrations that sync your CRM, email, payments, scheduling, and more. No more switching between apps.",
@@ -196,11 +185,15 @@ export default function SoftwarePageContent() {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5">
             {solutions.map((sol, i) => {
               const ac = accentClasses[sol.accent];
               return (
-                <FadeIn key={sol.title} delay={(i % 3) * 100}>
+                <FadeIn
+                  key={sol.title}
+                  delay={(i < 2 ? i : i - 2) * 100}
+                  className={i < 2 ? "lg:col-span-3" : i === solutions.length - 1 ? "md:col-span-2 lg:col-span-2" : "lg:col-span-2"}
+                >
                   <div className="relative p-7 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 h-full group">
                     <div className={`w-12 h-12 rounded-xl ${ac.bg} border ${ac.border} flex items-center justify-center mb-5 ${ac.text} group-hover:scale-110 transition-transform`}>
                       {sol.icon}

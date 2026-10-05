@@ -36,7 +36,7 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    highlights: ["Any platform", "SEO-ready", "Training included", "Mobile-friendly"],
+    highlights: ["Any platform", "Fast-loading", "Training included", "Mobile-friendly"],
     locations: [
       { label: "South Bend, IN", href: "/services/web-development/south-bend" },
       { label: "Fort Wayne, IN", href: "/services/web-development/fort-wayne" },
@@ -45,27 +45,6 @@ const services = [
       { label: "LaPorte, IN", href: "/services/web-development/laporte" },
       { label: "Goshen, IN", href: "/services/web-development/goshen" },
       { label: "Niles, MI", href: "/services/web-development/niles" },
-    ],
-  },
-  {
-    title: "SEO Services",
-    href: "/services/seo",
-    desc: "Get found on Google by the people searching for what you offer. Keyword research, on-page optimization, local SEO, and ongoing strategy to grow your organic traffic.",
-    accent: "purple",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    ),
-    highlights: ["Local SEO", "Keyword research", "Google rankings", "Traffic growth"],
-    locations: [
-      { label: "South Bend, IN", href: "/services/seo/south-bend" },
-      { label: "Fort Wayne, IN", href: "/services/seo/fort-wayne" },
-      { label: "Warsaw, IN", href: "/services/seo/warsaw" },
-      { label: "Mishawaka, IN", href: "/services/seo/mishawaka" },
-      { label: "LaPorte, IN", href: "/services/seo/laporte" },
-      { label: "Goshen, IN", href: "/services/seo/goshen" },
-      { label: "Niles, MI", href: "/services/seo/niles" },
     ],
   },
 ];
@@ -116,8 +95,8 @@ export default function ServicesPageContent() {
               </span>
             </h2>
             <p className="text-neutral-400 text-lg sm:text-xl max-w-2xl leading-relaxed">
-              From websites to custom software to SEO, I help businesses in South Bend,
-              Fort Wayne, and across the country build a stronger online presence.
+              I build websites and custom software for businesses in South Bend,
+              Fort Wayne, and across the country.
               Pick the service that fits, or reach out and we&apos;ll figure it out together.
             </p>
           </FadeIn>

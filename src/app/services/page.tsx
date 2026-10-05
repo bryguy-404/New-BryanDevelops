@@ -3,13 +3,12 @@ import ServicesPageContent from "@/components/ServicesPageContent";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "All Services & Locations | Bryan Develops — South Bend, IN",
+  title: "Website & Software Services | Bryan Develops — South Bend, IN",
   description:
-    "Explore all services offered by Bryan Develops: web design, custom software development, SEO, and app development. Serving South Bend, Fort Wayne, Mishawaka, Elkhart, and businesses nationwide.",
+    "Explore all services offered by Bryan Develops: web design, custom software development, and app development. Serving South Bend, Fort Wayne, Mishawaka, Elkhart, and businesses nationwide.",
   keywords: [
     "web design South Bend",
     "custom software South Bend",
-    "SEO services South Bend",
     "app development Indiana",
     "web developer near me",
     "software developer South Bend",
@@ -18,9 +17,9 @@ export const metadata: Metadata = {
     "affordable web design Indiana",
   ],
   openGraph: {
-    title: "All Services | Bryan Develops — South Bend, IN",
+    title: "Website & Software Services | Bryan Develops — South Bend, IN",
     description:
-      "Web design, custom software, SEO, and app development for businesses in South Bend, Fort Wayne, and beyond.",
+      "Web design, custom software, and app development for businesses in South Bend, Fort Wayne, and beyond.",
     type: "website",
   },
 };
@@ -30,7 +29,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Bryan Develops",
   description:
-    "Web design, custom software development, SEO, and app development for businesses in South Bend, Indiana and nationwide.",
+    "Web design, custom software development, and app development for businesses in South Bend, Indiana and nationwide.",
   url: "https://bryandevelops.com/services",
   areaServed: [
     { "@type": "City", name: "South Bend", addressRegion: "IN" },
@@ -55,7 +54,6 @@ const jsonLd = {
     "Web Design",
     "Web Development",
     "Custom Software Development",
-    "SEO Services",
     "Mobile App Development",
   ],
 };

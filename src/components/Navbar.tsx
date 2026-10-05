@@ -15,7 +15,6 @@ const navLinks = [
 const serviceLinks = [
   { label: "Custom Software", href: "/services/software", desc: "Automation, AI & business tools" },
   { label: "Web Development", href: "/services/web-development", desc: "Affordable websites on any platform" },
-  { label: "SEO Services", href: "/services/seo", desc: "Get found on Google & grow traffic" },
 ];
 
 export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light" }) {
@@ -236,7 +235,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
             />
           </div>
           <p className="text-neutral-500 text-sm leading-relaxed">
-            Custom web design, SEO optimization, and software development for businesses in South Bend and across the country. Standing out online? That&apos;s where I come in.
+            Custom websites and software for businesses in South Bend and across the country. I build practical tools, clear interfaces, and websites you can manage with confidence.
           </p>
         </div>
 
@@ -361,7 +360,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
           <div className="border-t border-neutral-100 pt-6">
             <h4 className="text-neutral-900 font-semibold text-sm tracking-wide mb-3">Services</h4>
             <div className="flex flex-wrap gap-2">
-              {["Web Design", "SEO", "Custom Software", "App Development", "AI Tools", "Branding"].map((s) => (
+              {["Web Design", "Custom Software", "App Development", "AI Tools", "Branding"].map((s) => (
                 <span key={s} className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200/60">
                   {s}
                 </span>

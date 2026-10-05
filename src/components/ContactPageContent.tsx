@@ -6,7 +6,6 @@ import FadeIn from "./FadeIn";
 
 const services = [
   "Web Design",
-  "SEO Optimization",
   "Custom Software",
   "Branding",
   "Technical Support",
@@ -69,8 +68,8 @@ export default function ContactPageContent() {
                   Let&apos;s Build Something Great.
                 </h1>
                 <p className="text-neutral-400 text-lg leading-relaxed max-w-md">
-                  Have a project in mind? Whether it&apos;s a website, SEO strategy,
-                  or custom software. I&apos;d love to hear about it.
+                  Have a project in mind? Whether it&apos;s a website, custom software,
+                  or support for an existing project, I&apos;d love to hear about it.
                 </p>
               </div>
 

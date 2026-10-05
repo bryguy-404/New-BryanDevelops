@@ -4,15 +4,16 @@ A reusable guide for creating location-specific service landing pages on bryande
 
 ## Overview
 
-Each location page targets local SEO keywords for a specific city + service combination (e.g., "web design Fort Wayne" or "SEO services South Bend"). The page follows the same structure and theme as its parent service page but with hyper-local content.
+Each location page describes website or software development for a specific city (e.g., "web design Fort Wayne" or "custom software South Bend"). The page follows the same structure and theme as its parent service page but with hyper-local content.
 
 ## Current Pages
+
+Current services are Web Development and Custom Software. SimplSEO remains a software case study, including its existing Engineering and portfolio showcases.
 
 | Service | South Bend | Fort Wayne |
 |---------|-----------|------------|
 | Web Development | /services/web-development/south-bend | /services/web-development/fort-wayne |
 | Custom Software | /services/software/south-bend | /services/software/fort-wayne |
-| SEO Services | /services/seo/south-bend | /services/seo/fort-wayne |
 
 ## Theme Per Service
 
@@ -20,7 +21,6 @@ Each location page targets local SEO keywords for a specific city + service comb
 |---------|-------|--------|------------|-------------|
 | Web Development | Light | `variant="light"` | `bg-[#f8f9fa]`, `pt-28` | `text-neutral-900`, `text-neutral-500` |
 | Custom Software | Dark | `variant="dark"` | `bg-neutral-950` | `text-white`, `text-neutral-400` |
-| SEO Services | Dark | `variant="dark"` | `bg-neutral-950` | `text-white`, `text-neutral-400` |
 
 ## Files to Create (per location page)
 
@@ -36,7 +36,6 @@ export const metadata: Metadata = {
   description: "...", // 150-160 chars, mention city + service + key differentiator
   keywords: [
     // 12-15 keywords combining city + service variations
-    // Include "get more website traffic [city]" for SEO pages
   ],
   openGraph: {
     title: "[Service] in [City] | Bryan Develops",
@@ -72,7 +71,7 @@ const jsonLd = {
 ### 2. Content component: `src/components/[CityService]Content.tsx`
 
 Naming convention: `[City][Service]Content.tsx`
-- Examples: `FortWayneWebDevContent.tsx`, `SouthBendSoftwareContent.tsx`, `FortWayneSeoContent.tsx`
+- Examples: `FortWayneWebDevContent.tsx`, `SouthBendSoftwareContent.tsx`
 
 ## Content Component Structure
 
@@ -98,7 +97,6 @@ Every location page follows this section layout:
 
 4. [Service-specific section]
    - Web Dev: Platforms grid (WordPress, Shopify, etc.)
-   - SEO: simplSEO DIY alternative section
    - Software: (none extra)
 
 5. Why Local Matters Section
@@ -161,8 +159,7 @@ Add to the service's "Location-specific pages" list and the Site Map section.
 - Reference specific neighborhoods, streets, and landmarks in the city
 - Mention local industries relevant to that city
 - Use unique copy for each city (not just find-and-replace city names)
-- Include "get more website traffic" in SEO pages
-- Include simplSEO section in SEO pages
+- Keep simplSEO case studies and historical client work intact. SEO management is no longer a current service; do not recreate its retired landing pages.
 - Use commas, periods, colons, or parentheses instead of em dashes
 - Keep accent colors consistent with the service theme
 

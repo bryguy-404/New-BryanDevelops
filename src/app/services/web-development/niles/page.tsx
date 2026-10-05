@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Small Business Web Design & Development in Niles, MI | Bryan Develops",
   description:
-    "Professional web design and development for small businesses in Niles, Michigan. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, SEO-ready, and built to convert. Free consultation.",
+    "Professional web design and development for small businesses in Niles, Michigan. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, fast-loading, and built to convert. Free consultation.",
   keywords: [
     "web design Niles",
     "web developer Niles Michigan",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Small Business Web Design & Development in Niles | Bryan Develops",
     description:
-      "Professional websites for small businesses in Niles. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, SEO-ready, and affordable.",
+      "Professional websites for small businesses in Niles. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, fast-loading, and affordable.",
     type: "website",
   },
 };
@@ -37,7 +37,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Bryan Develops, Web Design & Development in Niles",
   description:
-    "Professional web design and development for businesses in Niles, Berrien County, and southwest Michigan. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with SEO and training included.",
+    "Professional web design and development for businesses in Niles, Berrien County, and southwest Michigan. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with responsive layouts and training included.",
   url: "https://bryandevelops.com/services/web-development/niles",
   areaServed: [
     { "@type": "City", name: "Niles", addressRegion: "MI" },
@@ -71,7 +71,6 @@ const jsonLd = {
     "Squarespace",
     "Wix",
     "E-Commerce",
-    "SEO",
     "Responsive Design",
   ],
 };

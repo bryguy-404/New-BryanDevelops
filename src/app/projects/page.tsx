@@ -3,7 +3,7 @@ import WorkPageContent from "@/components/WorkPageContent";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Projects & Portfolio | Bryan Develops — Web Design, SEO & Software",
+  title: "Projects & Portfolio | Bryan Develops — Websites & Software",
   description:
     "Explore the portfolio of Bryan Develops. Custom websites, SEO campaigns, and software projects built for businesses in South Bend, Indiana and across the country.",
   keywords: [

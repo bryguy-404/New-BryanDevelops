@@ -16,9 +16,9 @@ const problems = [
       "This is one of the most common complaints I hear from South Bend business owners. The original developer disappeared, and now updating a phone number feels impossible. I build sites you can actually manage, and I'll sit down with you and walk through everything.",
   },
   {
-    question: "Your business doesn't show up when people search in South Bend?",
+    question: "Is your website slow, confusing, or difficult to use on a phone?",
     answer:
-      "A beautiful website means nothing if nobody finds it. Every site I build comes with SEO foundations baked in: proper structure, fast loading, mobile-friendly design, and local keyword optimization so South Bend customers can find you on Google.",
+      "Your customers should be able to find the information they need and contact you without frustration. I build clear layouts, improve loading performance, and make forms and navigation work across phones, tablets, and desktops.",
   },
   {
     question: "You need an online store for your South Bend shop?",
@@ -59,8 +59,8 @@ const services = [
     ),
   },
   {
-    title: "SEO-Ready Builds",
-    desc: "Every website I build is structured for Google from the start: clean code, fast load times, proper headings, meta tags, and mobile optimization all included.",
+    title: "Fast, Well-Structured Websites",
+    desc: "Clean code, clear page structure, descriptive page titles, and responsive layouts make your website easier to use and maintain.",
     accent: "pink",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

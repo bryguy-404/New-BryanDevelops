@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Web Design & Development in Goshen, IN | Bryan Develops",
   description:
-    "Professional web design and development for Goshen, Indiana businesses. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, SEO-ready, and built to convert. Free consultation.",
+    "Professional web design and development for Goshen, Indiana businesses. WordPress, Shopify, Squarespace, Wix, or custom-built websites. Mobile-friendly, fast-loading, and built to convert. Free consultation.",
   keywords: [
     "web design Goshen",
     "web developer Goshen Indiana",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Web Design & Development in Goshen | Bryan Develops",
     description:
-      "Professional websites for Goshen businesses. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, SEO-ready, and affordable.",
+      "Professional websites for Goshen businesses. WordPress, Shopify, Squarespace, Wix, or custom-built. Mobile-friendly, fast-loading, and affordable.",
     type: "website",
   },
 };
@@ -37,7 +37,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Bryan Develops, Web Design & Development in Goshen",
   description:
-    "Professional web design and development for businesses in Goshen, Elkhart County, and northern Indiana. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with SEO and training included.",
+    "Professional web design and development for businesses in Goshen, Elkhart County, and northern Indiana. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with responsive layouts and training included.",
   url: "https://bryandevelops.com/services/web-development/goshen",
   areaServed: [
     { "@type": "City", name: "Goshen", addressRegion: "IN" },
@@ -71,7 +71,6 @@ const jsonLd = {
     "Squarespace",
     "Wix",
     "E-Commerce",
-    "SEO",
     "Responsive Design",
   ],
 };

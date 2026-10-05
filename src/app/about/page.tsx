@@ -6,19 +6,18 @@ export const metadata: Metadata = {
   title:
     "About Bryan Arambula | Bryan Develops — Web Developer in South Bend, IN",
   description:
-    "Meet Bryan Arambula, the web developer behind Bryan Develops. Based in South Bend, Indiana — building websites, custom software, and SEO strategies for businesses locally and nationwide.",
+    "Meet Bryan Arambula, the web developer behind Bryan Develops. Based in South Bend, Indiana — building websites and custom software for businesses locally and nationwide.",
   keywords: [
     "web developer South Bend",
     "about Bryan Develops",
     "South Bend web designer",
     "Bryan Arambula developer",
     "software developer South Bend Indiana",
-    "SEO expert South Bend",
   ],
   openGraph: {
     title: "About Bryan Arambula | Bryan Develops",
     description:
-      "Meet the developer behind Bryan Develops. Based in South Bend, IN — websites, software, and SEO done right.",
+      "Meet the developer behind Bryan Develops. Based in South Bend, IN — websites and custom software built around your business.",
     type: "website",
   },
 };

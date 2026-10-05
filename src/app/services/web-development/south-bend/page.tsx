@@ -36,7 +36,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Bryan Develops, Web Design & Development in South Bend",
   description:
-    "Professional web design and development for businesses in South Bend, Mishawaka, Granger, and the greater Michiana area. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with SEO and training included.",
+    "Professional web design and development for businesses in South Bend, Mishawaka, Granger, and the greater Michiana area. WordPress, Shopify, Squarespace, Wix, and custom-coded websites with responsive layouts and training included.",
   url: "https://bryandevelops.com/services/web-development/south-bend",
   areaServed: [
     { "@type": "City", name: "South Bend", addressRegion: "IN" },

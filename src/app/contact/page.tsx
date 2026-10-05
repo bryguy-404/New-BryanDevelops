@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Contact | Bryan Develops — Get a Free Quote",
   description:
-    "Get in touch with Bryan Develops for custom web design, SEO, and software development. Free consultations for businesses in South Bend and nationwide.",
+    "Get in touch with Bryan Develops for custom web design and software development. Free consultations for businesses in South Bend and nationwide.",
 };
 
 export default function ContactPage() {

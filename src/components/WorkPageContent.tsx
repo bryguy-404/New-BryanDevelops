@@ -108,6 +108,20 @@ const projects: Project[] = [
     accent: "emerald",
   },
   {
+    title: "Flores Landscaping",
+    logo: "/logos/flores-landscaping.webp",
+    description:
+      "Landscaping website for a family-owned South Bend business, featuring seasonal services, before-and-after galleries, and free estimate requests.",
+    tags: ["Web Design", "Development"],
+    category: ["Websites"],
+    url: "https://www.flores-landscaping-llc.com/",
+    metrics: [
+      { label: "Services", value: "7" },
+      { label: "Estimates", value: "Free" },
+    ],
+    accent: "emerald",
+  },
+  {
     title: "Big Rapids Products",
     logo: "/logos/big-rapids-products.png",
     description:
@@ -233,20 +247,6 @@ const projects: Project[] = [
       { label: "Google", value: "5.0" },
     ],
     accent: "pink",
-  },
-  {
-    title: "Brilliant Solar Solutions",
-    logo: "/logos/brilliantsolar.png",
-    description:
-      "Solar energy company website serving Indiana, Illinois, and nationwide. Lead generation and consultation booking.",
-    tags: ["Web Design", "SEO"],
-    category: ["Websites", "SEO"],
-    url: "https://brilliantsolarsolution.com",
-    metrics: [
-      { label: "5★", value: "Reviews" },
-      { label: "Nationwide", value: "Coverage" },
-    ],
-    accent: "emerald",
   },
   {
     title: "EME Flooring",

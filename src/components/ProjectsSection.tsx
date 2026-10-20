@@ -105,6 +105,19 @@ const projects: Project[] = [
     accent: "emerald",
   },
   {
+    title: "Flores Landscaping",
+    logo: "/logos/flores-landscaping-icon.svg",
+    description:
+      "Landscaping website for a family-owned South Bend business, featuring seasonal services, before-and-after galleries, and free estimate requests.",
+    tags: ["Web Design", "Development"],
+    url: "https://www.flores-landscaping-llc.com/",
+    metrics: [
+      { label: "Services", value: "7" },
+      { label: "Estimates", value: "Free" },
+    ],
+    accent: "emerald",
+  },
+  {
     title: "Ananta Breathwork",
     logo: "/logos/anantabreathwork.png",
     description: "Wellness brand website with booking integration and calming visual identity.",
@@ -201,18 +214,6 @@ const projects: Project[] = [
       { label: "Backup", value: "Battery" },
     ],
     accent: "amber",
-  },
-  {
-    title: "Brilliant Solar Solutions",
-    logo: "/logos/brilliantsolar-white.png",
-    description: "Solar energy company website serving Indiana, Illinois, and nationwide. Lead generation and consultation booking.",
-    tags: ["Web Design", "SEO"],
-    url: "https://brilliantsolarsolution.com",
-    metrics: [
-      { label: "5★", value: "Reviews" },
-      { label: "Nationwide", value: "Coverage" },
-    ],
-    accent: "emerald",
   },
   {
     title: "EME Flooring",

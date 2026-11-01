@@ -58,7 +58,7 @@ const projects: Project[] = [
       "Custom-built SEO workflow software for audits, rank tracking, and reporting. Streamlines the entire optimization process.",
     tags: ["Software", "SEO", "Development"],
     category: ["Software", "SEO"],
-    url: "https://simplseo-io.vercel.app",
+    url: "https://simpl-seo.com/",
     metrics: [
       { label: "Tooling", value: "SEO" },
       { label: "Built", value: "Custom" },

@@ -237,7 +237,7 @@ export default function SoftwareProducts() {
                 <li><Check aria-hidden="true" /> Get guidance from your AI SEO mentor</li>
                 <li><Check aria-hidden="true" /> Turn keywords into content outlines</li>
               </ul>
-              <a href="https://simplseo-io.vercel.app" target="_blank" rel="noopener noreferrer" className={styles.productLink}>
+              <a href="https://simpl-seo.com/" target="_blank" rel="noopener noreferrer" className={styles.productLink}>
                 Explore SimplSEO <ArrowUpRight aria-hidden="true" />
               </a>
               <p className={styles.productNote}>Made for small business owners</p>

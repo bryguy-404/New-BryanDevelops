@@ -428,7 +428,7 @@ export default function EngineeringPageContent({
                       ]}
                     />
                     <a
-                      href="https://simplseo-io.vercel.app"
+                      href="https://simpl-seo.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-indigo-700 hover:text-indigo-900"

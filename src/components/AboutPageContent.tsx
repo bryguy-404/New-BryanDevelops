@@ -276,7 +276,7 @@ export default function AboutPageContent() {
                 <div className="space-y-4 text-neutral-500 text-base leading-relaxed">
                   <p>
                     Outside of client work, I am constantly tinkering. I have built iOS apps
-                    for fun, created simplSEO (my own SEO software), and I am always exploring
+                    for fun, created SimplSEO (my own SEO software), and I am always exploring
                     new technologies, from AI integrations to database design to automation tools.
                   </p>
                   <p>

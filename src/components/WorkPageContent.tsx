@@ -52,7 +52,7 @@ const projects: Project[] = [
     accent: "orange",
   },
   {
-    title: "simplSEO",
+    title: "SimplSEO",
     logo: "/logos/simplseo.png",
     description:
       "Custom-built SEO workflow software for audits, rank tracking, and reporting. Streamlines the entire optimization process.",

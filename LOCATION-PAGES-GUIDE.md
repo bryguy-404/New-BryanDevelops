@@ -159,7 +159,7 @@ Add to the service's "Location-specific pages" list and the Site Map section.
 - Reference specific neighborhoods, streets, and landmarks in the city
 - Mention local industries relevant to that city
 - Use unique copy for each city (not just find-and-replace city names)
-- Keep simplSEO case studies and historical client work intact. SEO management is no longer a current service; do not recreate its retired landing pages.
+- Keep SimplSEO case studies and historical client work intact. SEO management is no longer a current service; do not recreate its retired landing pages.
 - Use commas, periods, colons, or parentheses instead of em dashes
 - Keep accent colors consistent with the service theme
 

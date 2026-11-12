@@ -1,5 +1,6 @@
 "use client";
 
+import OperatorDisclosure from "@/components/OperatorDisclosure";
 import Link from "next/link";
 import Image from "next/image";
 import FloatingDots from "./CursorDots";
@@ -447,6 +448,7 @@ export default function SoftwarePageContent() {
       {/* Footer */}
       <footer className="bg-neutral-950 border-t border-white/10 py-12 text-center text-neutral-500">
         <p>&copy; 2026 Bryan Develops. All rights reserved.</p>
+        <OperatorDisclosure />
       </footer>
     </main>
   );

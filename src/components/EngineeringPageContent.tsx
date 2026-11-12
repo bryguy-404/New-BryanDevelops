@@ -1,3 +1,4 @@
+import OperatorDisclosure from "@/components/OperatorDisclosure";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import SimplAssistFlow from "./SimplAssistFlow";
@@ -657,6 +658,7 @@ export default function EngineeringPageContent({
       </main>
       <footer className="border-t border-white/10 bg-neutral-950 px-6 py-10 text-center text-sm text-neutral-500">
         <p>&copy; 2026 Bryan Develops. All rights reserved.</p>
+        <OperatorDisclosure />
       </footer>
     </>
   );

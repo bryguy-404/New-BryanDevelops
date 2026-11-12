@@ -1,5 +1,6 @@
 "use client";
 
+import OperatorDisclosure from "@/components/OperatorDisclosure";
 import Link from "next/link";
 import FloatingDots from "./CursorDots";
 import FadeIn from "./FadeIn";
@@ -377,6 +378,7 @@ export default function WarsawWebDevContent() {
       {/* Footer */}
       <footer className="border-t border-neutral-200 py-12 text-center text-neutral-400">
         <p>&copy; 2026 Bryan Develops. All rights reserved.</p>
+        <OperatorDisclosure variant="light" />
       </footer>
     </main>
   );

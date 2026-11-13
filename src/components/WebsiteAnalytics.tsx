@@ -116,7 +116,7 @@ export default function WebsiteAnalytics() {
 
   if ((!eligible && !preview) || (consent !== null && !showChoices)) return null;
   return (
-    <section ref={panel} tabIndex={-1} aria-labelledby="analytics-heading"
+    <section id="analytics-preferences" ref={panel} tabIndex={-1} aria-labelledby="analytics-heading"
       className="fixed bottom-24 left-4 right-4 z-[90] max-h-[70dvh] overflow-y-auto rounded-2xl border border-white/15 bg-neutral-900 p-5 text-white shadow-2xl focus-visible:outline-2 focus-visible:outline-indigo-400 sm:bottom-5 sm:right-auto sm:max-w-md">
       <h2 id="analytics-heading" className="text-base font-semibold">Help improve Bryan Develops</h2>
       <p className="mt-2 text-sm leading-6 text-neutral-300">

@@ -55,3 +55,8 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Keep consent choices reachable when the existing chat opens on a phone. */
+body:has(#analytics-preferences) .sa-widget-container {
+  z-index: 80;
+}

@@ -27,7 +27,7 @@ export default function PrivacyPage() {
 
         <section id="website-analytics" className="mt-12 scroll-mt-32" aria-labelledby="analytics-privacy-heading">
           <h2 id="analytics-privacy-heading" className="mb-4 text-2xl font-semibold text-white">Optional website analytics</h2>
-          <p className="leading-8">With your permission, Google Analytics helps me understand which pages people visit, which software interests them, and whether they take steps to get in touch. Google’s analytics tag loads only after you choose “Allow analytics.” Choosing “No thanks” leaves analytics off and does not prevent you from using the site or contacting me.</p>
+          <p className="leading-8">With your permission, Google Analytics helps me understand which pages people visit, which software interests them, and whether they take steps to get in touch. Google’s analytics tag loads only after you choose “Allow analytics.” Choosing “No thanks” leaves analytics off and does not prevent you from using the site or contacting me. Allowing analytics plays a short thank-you animation; that is the only difference you’ll see on the site.</p>
           <ul className="my-5 list-disc space-y-3 pl-6 leading-7">
             <li>Measured interactions include product links and preview tabs, download clicks, phone and email links, opening chat, starting the contact form, and successful contact form submissions.</li>
             <li>Analytics receives page paths, the referring website, interaction types, and basic browser, device, and session information. Cookies help distinguish visits.</li>

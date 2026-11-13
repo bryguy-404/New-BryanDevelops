@@ -46,6 +46,13 @@ External referrers retain only their origin; internal page transitions use the
 previous public path. Google signals and advertising personalization are off in
 the tag settings sent by the site. No session recording is installed.
 
+The consent card has an original pixel mascot (`src/components/ConsentMascot.tsx`,
+drawn in code, no image asset). It peeks over the card while the visitor decides
+and, after "Allow analytics", hops across the card and runs off the right edge
+before the card closes (about 3.5s). Consent is saved before the animation
+starts. "No thanks" and `prefers-reduced-motion` close the card immediately.
+Do not swap in third-party characters or artwork.
+
 | Event | What it measures |
 | --- | --- |
 | `page_view` | A consenting visitor views a public page. |

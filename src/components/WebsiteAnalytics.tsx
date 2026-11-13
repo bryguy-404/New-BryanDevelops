@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { ConsentCelebration, ConsentPeek } from "@/components/ConsentMascot";
 import {
   CONSENT_KEY, CONSENT_EVENT, SETTINGS_EVENT, MEASUREMENT_ID,
   clearAnalyticsCookies, consentTimeRemaining, eventForLink, isMeasurementId, isProductionLocation,
@@ -57,6 +58,8 @@ export default function WebsiteAnalytics() {
   const consent = useSyncExternalStore(subscribeConsent, readConsent, serverConsent);
   const [showChoices, setShowChoices] = useState(false);
   const [storageError, setStorageError] = useState(false);
+  // While the thank-you animation plays: the card height to hold, so its top edge stays put.
+  const [celebration, setCelebration] = useState<number | null>(null);
   const panel = useRef<HTMLElement>(null);
   const settingsTrigger = useRef<HTMLElement | null>(null);
   const configured = isMeasurementId(MEASUREMENT_ID);
@@ -110,27 +113,61 @@ export default function WebsiteAnalytics() {
     saveConsent(choice);
     if (readConsent() === null) { setStorageError(true); return; }
     setStorageError(false);
+    // Consent is already saved; the card only stays up for the thank-you animation.
+    if (choice === "granted" && panel.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCelebration(panel.current.offsetHeight);
+      panel.current.focus();
+      return;
+    }
     setShowChoices(false);
     settingsTrigger.current?.focus();
   }
 
-  if ((!eligible && !preview) || (consent !== null && !showChoices)) return null;
+  const endCelebration = useCallback(() => {
+    // Hand focus back only if the visitor hasn't moved on to something else.
+    const restore = panel.current?.contains(document.activeElement);
+    setCelebration(null);
+    setShowChoices(false);
+    if (restore) settingsTrigger.current?.focus();
+  }, []);
+
+  const celebrating = celebration !== null;
+  if ((!eligible && !preview) || (consent !== null && !showChoices && !celebrating)) return null;
   return (
-    <section id="analytics-preferences" ref={panel} tabIndex={-1} aria-labelledby="analytics-heading"
-      className="fixed bottom-24 left-4 right-4 z-[90] max-h-[70dvh] overflow-y-auto rounded-2xl border border-white/15 bg-neutral-900 p-5 text-white shadow-2xl focus-visible:outline-2 focus-visible:outline-indigo-400 sm:bottom-5 sm:right-auto sm:max-w-md">
-      <h2 id="analytics-heading" className="text-base font-semibold">Help improve Bryan Develops</h2>
-      <p className="mt-2 text-sm leading-6 text-neutral-300">
-        Allow Google Analytics cookies to understand visits, software interest, and contact inquiries?
-        Your choice won’t affect how the site works.{" "}
-        <Link href="/privacy#website-analytics" className="underline underline-offset-2 hover:text-white">Privacy details</Link>
-      </p>
-      {storageError ? <p role="status" className="mt-2 text-sm text-amber-200">Your browser couldn’t save this choice. Analytics remains off.</p> : null}
-      <div className="mt-4 flex flex-wrap gap-3">
-        <button type="button" onClick={() => choose("granted")} className="min-h-11 rounded-xl border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Allow analytics</button>
-        <button type="button" onClick={() => choose("denied")} className="min-h-11 rounded-xl border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">No thanks</button>
-        {showChoices && consent !== null ? <button type="button" onClick={() => { setShowChoices(false); settingsTrigger.current?.focus(); }} className="min-h-11 px-2 text-sm underline focus-visible:outline-2 focus-visible:outline-indigo-400">Close</button> : null}
+    <>
+      <div className="fixed bottom-24 left-4 right-4 z-[90] sm:bottom-5 sm:right-auto sm:max-w-md">
+        {celebrating ? null : <ConsentPeek />}
+        <section id="analytics-preferences" ref={panel} tabIndex={-1} aria-labelledby="analytics-heading"
+          style={celebrating ? { minHeight: celebration } : undefined}
+          className="relative flex max-h-[70dvh] flex-col justify-center overflow-y-auto rounded-2xl border border-white/15 bg-neutral-900 p-5 text-white shadow-2xl focus-visible:outline-2 focus-visible:outline-indigo-400">
+          {celebrating ? (
+            <div role="status">
+              <h2 id="analytics-heading" className="text-base font-semibold">Thanks! Enjoy the show.</h2>
+              <p className="mt-2 text-sm leading-6 text-neutral-300">
+                Analytics is on. You can change this anytime under “Analytics preferences” in the footer.
+              </p>
+            </div>
+          ) : (
+            <>
+              <h2 id="analytics-heading" className="text-base font-semibold">Help improve Bryan Develops</h2>
+              <p className="mt-2 text-sm leading-6 text-neutral-300">
+                Allow Google Analytics cookies to understand visits, software interest, and contact inquiries?
+                Say yes and the little pixel dev peeking over this card puts on a quick thank-you show.
+                The site works the same either way.{" "}
+                <Link href="/privacy#website-analytics" className="underline underline-offset-2 hover:text-white">Privacy details</Link>
+              </p>
+              {storageError ? <p role="status" className="mt-2 text-sm text-amber-200">Your browser couldn’t save this choice. Analytics remains off.</p> : null}
+              <div className="mt-4 flex flex-wrap gap-3">
+                <button type="button" onClick={() => choose("granted")} className="min-h-11 rounded-xl border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Allow analytics</button>
+                <button type="button" onClick={() => choose("denied")} className="min-h-11 rounded-xl border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">No thanks</button>
+                {showChoices && consent !== null ? <button type="button" onClick={() => { setShowChoices(false); settingsTrigger.current?.focus(); }} className="min-h-11 px-2 text-sm underline focus-visible:outline-2 focus-visible:outline-indigo-400">Close</button> : null}
+              </div>
+            </>
+          )}
+        </section>
       </div>
-    </section>
+      {celebrating ? <ConsentCelebration anchor={panel} onDone={endCelebration} /> : null}
+    </>
   );
 }
 

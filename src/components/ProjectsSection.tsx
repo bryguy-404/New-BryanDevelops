@@ -364,7 +364,7 @@ export default function ProjectsSection() {
 
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory"
+          className="flex gap-5 overflow-x-auto overscroll-x-contain scrollbar-hide pb-2 snap-x snap-proximity"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
 
@@ -376,7 +376,7 @@ export default function ProjectsSection() {
                 href={project.url}
                 target={project.url.startsWith("http") ? "_blank" : undefined}
                 rel={project.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative flex flex-col shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-white/20 hover:bg-white/[0.07] hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group relative flex flex-col shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-white/20 hover:bg-white/[0.07] hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 {/* Top gradient line */}
                 <div className={`h-[2px] w-full bg-gradient-to-r ${c.line} opacity-50 group-hover:opacity-100 transition-opacity`} />

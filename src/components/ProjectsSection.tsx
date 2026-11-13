@@ -358,13 +358,13 @@ export default function ProjectsSection() {
       {/* Slider */}
       <FadeIn delay={100}>
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Fade edges — covers the outer part of the first/last cards */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 bg-gradient-to-r from-neutral-950 via-neutral-950/60 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 bg-gradient-to-l from-neutral-950 via-neutral-950/60 to-transparent z-10 pointer-events-none" />
+        {/* Fade edges — covers the outer part of the first/last cards. Narrow on phones, where one card is centered per swipe. */}
+        <div className="absolute left-0 top-0 bottom-0 w-5 sm:w-36 lg:w-48 bg-gradient-to-r from-neutral-950 via-neutral-950/60 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-5 sm:w-36 lg:w-48 bg-gradient-to-l from-neutral-950 via-neutral-950/60 to-transparent z-10 pointer-events-none" />
 
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto overscroll-x-contain scrollbar-hide pb-2 snap-x snap-proximity"
+          className="flex gap-5 overflow-x-auto overscroll-x-contain scrollbar-hide pb-2 snap-x snap-proximity max-sm:snap-mandatory max-sm:px-[calc(50%-150px)]"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
 
@@ -376,7 +376,7 @@ export default function ProjectsSection() {
                 href={project.url}
                 target={project.url.startsWith("http") ? "_blank" : undefined}
                 rel={project.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative flex flex-col shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-white/20 hover:bg-white/[0.07] hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group relative flex flex-col shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start max-sm:snap-center max-sm:snap-always rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-white/20 hover:bg-white/[0.07] hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 {/* Top gradient line */}
                 <div className={`h-[2px] w-full bg-gradient-to-r ${c.line} opacity-50 group-hover:opacity-100 transition-opacity`} />
@@ -446,7 +446,7 @@ export default function ProjectsSection() {
           {/* "View All" end card */}
           <Link
             href="/projects"
-            className="group relative flex flex-col items-center justify-center shrink-0 w-[200px] sm:w-[240px] snap-start rounded-2xl bg-white/[0.02] border border-dashed border-white/10 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300"
+            className="group relative flex flex-col items-center justify-center shrink-0 w-[200px] sm:w-[240px] snap-start max-sm:snap-center max-sm:snap-always rounded-2xl bg-white/[0.02] border border-dashed border-white/10 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300"
           >
             <div className="w-14 h-14 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center mb-4 group-hover:bg-white/10 transition-colors">
               <svg className="w-6 h-6 text-neutral-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -13,6 +13,7 @@ import {
   Search,
 } from "lucide-react";
 import styles from "./SoftwareProducts.module.css";
+import { trackEvent, type WebsiteEvent } from "@/lib/analytics/website";
 
 const seoViews = ["Opportunities", "AI mentor", "Content"];
 const assistViews = ["Inbox", "Calendar"];
@@ -32,6 +33,15 @@ function PreviewTabs({
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  function select(index: number) {
+    onSelect(index);
+    if (index === selected) return;
+    const keys: WebsiteEvent[] = id === "seo-preview"
+      ? ["seo_opportunities", "seo_mentor", "seo_content"]
+      : ["assist_inbox", "assist_calendar"];
+    trackEvent(keys[index]);
+  }
+
   function handleKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
     let next = selected;
     if (event.key === "ArrowRight") next = (selected + 1) % items.length;
@@ -41,7 +51,7 @@ function PreviewTabs({
     else return;
 
     event.preventDefault();
-    onSelect(next);
+    select(next);
     refs.current[next]?.focus();
   }
 
@@ -57,7 +67,7 @@ function PreviewTabs({
           aria-controls={`${id}-panel`}
           aria-selected={selected === index}
           tabIndex={selected === index ? 0 : -1}
-          onClick={() => onSelect(index)}
+          onClick={() => select(index)}
           onKeyDown={handleKeyDown}
         >
           {item}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { trackEvent } from "@/lib/analytics/website";
 import FloatingDots from "./CursorDots";
 import FadeIn from "./FadeIn";
 
@@ -24,6 +25,7 @@ export default function ContactPageContent() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const trackedStart = useRef(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -38,6 +40,7 @@ export default function ContactPageContent() {
       });
 
       if (!res.ok) throw new Error("Failed to send");
+      trackEvent("contact_form_success");
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again or email me directly.");
@@ -149,6 +152,7 @@ export default function ContactPageContent() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
+                      trackedStart.current = false;
                       setFormData({ name: "", email: "", phone: "", service: "", budget: "", message: "" });
                     }}
                     className="mt-6 px-5 py-2 rounded-full border border-white/15 text-sm font-medium text-white hover:bg-white/10 transition-colors"
@@ -157,7 +161,9 @@ export default function ContactPageContent() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <form onSubmit={handleSubmit} onChange={() => {
+                  if (!trackedStart.current) trackedStart.current = trackEvent("contact_form_start");
+                }} className="flex flex-col gap-5">
                   <h2 className="text-xl font-bold text-white mb-1">Send a Message</h2>
 
                   {/* Name + Email row */}

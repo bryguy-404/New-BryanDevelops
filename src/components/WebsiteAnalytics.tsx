@@ -151,9 +151,8 @@ export default function WebsiteAnalytics() {
             <>
               <h2 id="analytics-heading" className="text-base font-semibold">Help improve Bryan Develops</h2>
               <p className="mt-2 text-sm leading-6 text-neutral-300">
-                Allow Google Analytics cookies to understand visits, software interest, and contact inquiries?
-                Say yes and the little pixel dev peeking over this card puts on a quick thank-you show.
-                The site works the same either way.{" "}
+                Want to see the pixel dev peeking over this card do a trick?
+                Allow Google Analytics cookies and he’ll put on a quick show.{" "}
                 <Link href="/privacy#website-analytics" className="underline underline-offset-2 hover:text-white">Privacy details</Link>
               </p>
               {storageError ? <p role="status" className="mt-2 text-sm text-amber-200">Your browser couldn’t save this choice. Analytics remains off.</p> : null}

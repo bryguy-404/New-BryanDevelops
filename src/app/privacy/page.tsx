@@ -16,12 +16,13 @@ export default function PrivacyPage() {
       <main className="mx-auto max-w-3xl px-6 pb-24 pt-40 sm:pt-48">
         <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-indigo-400">Your privacy</p>
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">Privacy &amp; analytics</h1>
-        <p className="mt-5 text-sm text-neutral-400">Updated November 13, 2026</p>
+        <p className="mt-5 text-sm text-neutral-400">Updated November 22, 2026</p>
         <p className="mt-8 leading-8">Bryan Develops is operated by Arambula Ventures LLC. This page explains how information is used on bryandevelops.com. Separate products linked from this website have their own privacy information.</p>
 
         <section className="mt-12" aria-labelledby="inquiries-heading">
           <h2 id="inquiries-heading" className="mb-4 text-2xl font-semibold text-white">When you contact me</h2>
           <p className="leading-8">The contact form sends the information you provide—including your name, email, optional phone number, service, budget, and message—to Bryan’s business email so I can respond to your inquiry. Email and website hosting providers process this information to deliver the service.</p>
+          <p className="mt-4 leading-8">Cloudflare Turnstile protects the contact form from automated spam. It processes browser and device signals to verify visitors before a message is sent. See <a href="https://www.cloudflare.com/turnstile-privacy-policy/" className="text-indigo-300 underline underline-offset-4">Cloudflare’s Turnstile privacy information</a>.</p>
           <p className="mt-4 leading-8">The website chat is provided by SimplAssist. If you use it, your messages and any details you choose to share are processed by SimplAssist to respond and help with your inquiry. See <a href="https://simplassist.com/privacy" className="text-indigo-300 underline underline-offset-4">SimplAssist’s privacy policy</a>. Avoid including passwords, payment details, or other sensitive information in a message.</p>
         </section>
 

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:analytics": "node --test scripts/test-analytics.cjs",
+    "test:contact": "node --test scripts/test-contact.cjs",
     "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {

@@ -1,16 +1,25 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, service, budget, message } =
-      await request.json();
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return NextResponse.json({ error: "Invalid form submission" }, { status: 400 });
+    }
+    const { name, email, phone, service, budget, message, turnstileToken } = body;
 
-    if (!name || !email || !service || !message) {
+    if ([name, email, service, message].some((value) => typeof value !== "string" || !value.trim())) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
+    }
+
+    const verification = await verifyTurnstile(turnstileToken);
+    if (!verification.success) {
+      return NextResponse.json({ error: verification.error }, { status: verification.status });
     }
 
     const transporter = nodemailer.createTransport({

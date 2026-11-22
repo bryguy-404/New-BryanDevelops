@@ -10,10 +10,37 @@ Next.js website for https://bryandevelops.com. Production is Vercel project
 - `npm run build -- --webpack` — production build and TypeScript checks.
 - `npm run lint` — repository lint.
 - `npm run test:analytics` — analytics consent, host/route, and payload tests.
+- `npm run test:contact` — Turnstile enforcement and email delivery boundary tests (no real email).
 - `npm run check:seo -- http://127.0.0.1:4317` — HTTP checks against a running production build: redirects, service canonicals, sitemap, internal links, and server-rendered content.
 
 Use Codex's built-in browser first for visual and interaction checks. Use a
 separate Chrome tab only when an essential existing sign-in is needed.
+
+## Contact form spam protection
+
+The contact form uses Cloudflare Turnstile in Managed mode with a styled status
+row. Cloudflare's checkbox appears only when interaction is required; it uses a
+centered compact layout on narrow screens. The email endpoint
+validates each token with Cloudflare before creating an SMTP transport, and
+requires the `contact` action and an allowed hostname. Missing, expired, invalid,
+or unverifiable tokens cannot send email. The widget refreshes after a failed
+submission so visitors can retry without retyping their inquiry.
+
+Vercel production configuration:
+
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: the widget's public site key (Config).
+- `TURNSTILE_SECRET_KEY`: the private verification key (Secret; server only).
+- `TURNSTILE_ALLOWED_HOSTNAMES`: optional comma-separated override; defaults to
+  `bryandevelops.com,www.bryandevelops.com`.
+
+The Cloudflare widget is **Bryan Develops Contact Form**, restricted to
+`bryandevelops.com` and its subdomains, with pre-clearance off. Changing the
+public site key requires a new build. Configure separate restricted widgets for
+preview hosts if preview form submissions are needed. Missing keys fail closed.
+Never commit the private key or use Cloudflare's dummy keys in a Vercel deployment.
+Local UI tests can explicitly supply Cloudflare's documented test keys.
+
+Reference: [Cloudflare Turnstile setup](https://developers.cloudflare.com/turnstile/get-started/).
 
 ## Website analytics (November 13, 2026)
 

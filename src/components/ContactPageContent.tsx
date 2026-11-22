@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { trackEvent } from "@/lib/analytics/website";
 import FloatingDots from "./CursorDots";
 import FadeIn from "./FadeIn";
+import ContactTurnstile from "./ContactTurnstile";
 
 const services = [
   "Web Design",
@@ -25,10 +26,19 @@ export default function ContactPageContent() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [verificationAttempt, setVerificationAttempt] = useState(0);
+  const submittingRef = useRef(false);
   const trackedStart = useRef(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (submittingRef.current) return;
+    if (!turnstileToken) {
+      setError("Please complete the security check before sending.");
+      return;
+    }
+    submittingRef.current = true;
     setSending(true);
     setError("");
 
@@ -36,15 +46,23 @@ export default function ContactPageContent() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken }),
       });
 
-      if (!res.ok) throw new Error("Failed to send");
+      if (!res.ok) {
+        const result = await res.json().catch(() => null);
+        setError(result?.error || "Something went wrong. Please try again or email me directly.");
+        return;
+      }
       trackEvent("contact_form_success");
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again or email me directly.");
     } finally {
+      // A token can be redeemed only once, including when email delivery fails.
+      setTurnstileToken("");
+      setVerificationAttempt((attempt) => attempt + 1);
+      submittingRef.current = false;
       setSending(false);
     }
   };
@@ -270,14 +288,16 @@ export default function ContactPageContent() {
                     />
                   </div>
 
+                  <ContactTurnstile key={verificationAttempt} onToken={setTurnstileToken} />
+
                   {error && (
-                    <p className="text-red-400 text-sm text-center">{error}</p>
+                    <p role="alert" className="text-red-400 text-sm text-center">{error}</p>
                   )}
 
                   {/* Submit */}
                   <button
                     type="submit"
-                    disabled={sending}
+                    disabled={sending || !turnstileToken}
                     className="w-full px-7 py-3.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-sm tracking-wide hover:from-indigo-600 hover:to-purple-600 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.3)] disabled:opacity-60 disabled:pointer-events-none"
                   >
                     {sending ? "Sending..." : "Send Message"}

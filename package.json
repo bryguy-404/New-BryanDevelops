@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:analytics": "node --test scripts/test-analytics.cjs"
+    "test:analytics": "node --test scripts/test-analytics.cjs",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.577.0",

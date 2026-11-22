@@ -1,192 +1,93 @@
-# Location + Service Landing Page Guide
+# Location and service consolidation
 
-A reusable guide for creating location-specific service landing pages on bryandevelops.com.
+Approved release scope: November 22, 2026. Site: https://bryandevelops.com.
+Repository: `bryguy-404/New-BryanDevelops`. Production project: `new-bryan-develops`.
 
-## Overview
+## Scope and preservation boundary
 
-Each location page describes website or software development for a specific city (e.g., "web design Fort Wayne" or "custom software South Bend"). The page follows the same structure and theme as its parent service page but with hyper-local content.
+The 14 city pages consolidate into their corresponding existing service page.
+The `/services` chooser and `/services/software` receive content, metadata and
+navigation improvements. The published `/services/web-development` copy and
+metadata are preserved, per Bryan’s explicit release instruction. Its title,
+description, structured data and existing absence of a declared canonical stay
+unchanged. The homepage, About, Contact and Projects copy and metadata also stay
+unchanged. A shared scroll-reveal fix leaves HTML visible without JavaScript;
+this is a presentation change affecting those pages as well.
 
-## Current Pages
+The original broader proposal to rewrite the website-service page was withdrawn
+before release. Do not restore that rewrite without a new scope decision.
+Detailed search-performance evidence, screenshots and release comparisons stay
+in the ignored local audit folder; they are not public source assets.
 
-Current services are Web Development and Custom Software. SimplSEO remains a software case study, including its existing Engineering and portfolio showcases.
+## URL map
 
-| Service | South Bend | Fort Wayne |
-|---------|-----------|------------|
-| Web Development | /services/web-development/south-bend | /services/web-development/fort-wayne |
-| Custom Software | /services/software/south-bend | /services/software/fort-wayne |
+Paths use the apex HTTPS domain. **Keep** preserves the existing page; **Improve**
+retains its URL. **Consolidate** uses an exact permanent 308 to the destination.
 
-## Theme Per Service
+| URL | Decision | Destination | Rationale |
+|---|---|---|---|
+| `/services` | **Improve** | `/services` | Retain the service chooser, clarify website vs. software intent, and replace the city directory with useful direct links. |
+| `/services/web-development` | **Keep** | `/services/web-development` | Preserve the existing URL, published copy, title, description, canonical policy and structured data by explicit user instruction. Relevant city pages redirect to this existing service. |
+| `/services/software` | **Improve** | `/services/software` | Retain the workflow/application service, add practical planning guidance, and improve crawl signals. |
+| `/services/web-development/south-bend` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/web-development/fort-wayne` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/web-development/warsaw` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/web-development/mishawaka` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/web-development/laporte` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/web-development/goshen` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/web-development/niles` | **Consolidate** | `/services/web-development` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/south-bend` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/fort-wayne` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/warsaw` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/mishawaka` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/laporte` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/goshen` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
+| `/services/software/niles` | **Consolidate** | `/services/software` | Same service and visitor task as the parent; no distinct delivery arrangement or substantiated city-specific case established. |
 
-| Service | Theme | Navbar | Background | Text Colors |
-|---------|-------|--------|------------|-------------|
-| Web Development | Light | `variant="light"` | `bg-[#f8f9fa]`, `pt-28` | `text-neutral-900`, `text-neutral-500` |
-| Custom Software | Dark | `variant="dark"` | `bg-neutral-950` | `text-white`, `text-neutral-400` |
+Existing `/website-design-development` and `/best-website-builders` redirects
+remain. `/south-bend-web-developer` redirects to `/services/web-development`;
+`/my-work` redirects to `/projects`. The retired SEO-management URL remains 404
+because no equivalent current service is established. Unknown city paths also
+remain 404; there is no broad service catch-all.
 
-## Files to Create (per location page)
+## Technical behavior
 
-### 1. Page file: `src/app/services/[service]/[city-slug]/page.tsx`
+- `/services` and `/services/software` declare absolute self-canonicals, including
+  for query-bearing variants. The preserved website-service page has no declared
+  canonical. Google may select a canonical independently.
+- Internal links and the nine-page sitemap point to retained URLs. The sitemap
+  includes `/engineering` and omits artificial build-time modification dates.
+- Initial HTML includes readable service content. The shared reveal animates
+  below-fold content only when it enters view, with focus/anchor/reduced-motion
+  cancellation. Missing JavaScript or an observer cannot leave wrappers hidden.
+- Existing GA4 configuration and consent behavior stay in place. Its route
+  allowlist removes retired city URLs; no new Analytics tag is installed.
+- A slash variant can normalize before reaching its permanent replacement;
+  normal and query-bearing old URLs redirect directly, preserving the query.
 
-```typescript
-import type { Metadata } from "next";
-import [CityService]Content from "@/components/[CityService]Content";
-import Navbar from "@/components/Navbar";
+## Verification
 
-export const metadata: Metadata = {
-  title: "[Service] in [City], IN | Bryan Develops",
-  description: "...", // 150-160 chars, mention city + service + key differentiator
-  keywords: [
-    // 12-15 keywords combining city + service variations
-  ],
-  openGraph: {
-    title: "[Service] in [City] | Bryan Develops",
-    description: "...",
-    type: "website",
-  },
-};
+Build with `npm run build -- --webpack`, then start the production server with
+`npm run start -- --hostname 127.0.0.1 --port 4317`.
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Bryan Develops, [Service] in [City]",
-  description: "...",
-  url: "https://bryandevelops.com/services/[service]/[city-slug]",
-  areaServed: [
-    // Primary city + 4-5 nearby cities + state
-    { "@type": "City", name: "[City]", addressRegion: "IN" },
-    // ... nearby cities
-    { "@type": "State", name: "Indiana" },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "South Bend",
-    addressRegion: "IN",
-    addressCountry: "US",
-  },
-  serviceType: [
-    // Match the parent service page's serviceType array
-  ],
-};
-```
+- `npm run check:seo -- http://127.0.0.1:4317` checks 18 redirects with normal,
+  slash and query variants, the three retained service pages, approved canonical
+  policy, sitemap, internal links/anchors, robots, initial HTML and real 404s.
+- `npm run test:analytics` verifies existing consent and event boundaries.
+- Before release, capture the five protected pages with
+  `python3 scripts/check-preserved-pages.py capture https://bryandevelops.com <local-baseline.json>`.
+  Compare the local build and live release using the same script’s `compare`
+  command, base URL and baseline file. It checks normalized copy, title, meta
+  tags, canonicals and JSON-LD; build asset hashes and animation classes may vary.
+- Review desktop and phone rendering and the actual service/contact navigation.
+  Do not send a test contact message unless that action is authorized.
 
-### 2. Content component: `src/components/[CityService]Content.tsx`
+Technical verification does not prove indexing or ranking gains. After release,
+observe Google’s recrawl, selected canonicals, coverage and relevant search/lead
+behavior. Do not treat expected exclusion of redirected city URLs as failure.
+The separate www TLS issue and GA reporting access require their own follow-up;
+this release does not change hosting domains, DNS or Google account settings.
 
-Naming convention: `[City][Service]Content.tsx`
-- Examples: `FortWayneWebDevContent.tsx`, `SouthBendSoftwareContent.tsx`
-
-## Content Component Structure
-
-Every location page follows this section layout:
-
-```
-1. Hero Section
-   - Subtitle: "[Service], [City], IN"
-   - H1 with city name in gradient text
-   - Description mentioning the city
-   - CTA buttons: primary (/contact) + secondary (/services/[service])
-   - Subtext: "Based in South Bend, serving [City]..."
-
-2. Pain Points Section (4 items)
-   - City-specific problems
-   - Reference local streets, neighborhoods, landmarks
-   - Question + answer format
-
-3. Services Grid (6 cards)
-   - Same services as parent page
-   - City name woven into descriptions where natural
-   - Uses accentClasses color system (indigo, emerald, purple, amber, pink)
-
-4. [Service-specific section]
-   - Web Dev: Platforms grid (WordPress, Shopify, etc.)
-   - Software: (none extra)
-
-5. Why Local Matters Section
-   - For South Bend: "I live right here"
-   - For other cities: "Based in South Bend, X hours away"
-   - 3 value cards (Local, Direct/Transparent, Ongoing/Flexible)
-
-6. Industries Served Grid
-   - 6 industry cards
-   - South Bend: Manufacturing, Healthcare, Startups, Restaurants, Real Estate, Professional Services
-   - Fort Wayne: Contractors, Healthcare, Retail, Restaurants, Real Estate, Professional Services
-
-7. CTA Section
-   - "Serving [City] & [Region]"
-   - Final heading + description
-   - CTA buttons
-
-8. Footer
-   - Light: border-neutral-200, text-neutral-400
-   - Dark: border-white/10, text-neutral-500
-```
-
-## Files to Modify (per location page)
-
-### 3. ServicesPageContent.tsx
-
-Add to the relevant service's `locations` array:
-
-```typescript
-locations: [
-  { label: "South Bend, IN", href: "/services/[service]/south-bend" },
-  { label: "Fort Wayne, IN", href: "/services/[service]/fort-wayne" },
-  { label: "[New City], IN", href: "/services/[service]/[city-slug]" },
-],
-```
-
-### 4. sitemap.ts
-
-Add entry after the parent service's existing location entries:
-
-```typescript
-{ url: `${baseUrl}/services/[service]/[city-slug]`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-```
-
-### 5. public/llms.txt
-
-Add to the Pages section:
-
-```
-- [Service - City](https://bryandevelops.com/services/[service]/[city-slug])
-```
-
-### 6. public/llms-full.txt
-
-Add to the service's "Location-specific pages" list and the Site Map section.
-
-## Content Guidelines
-
-### Do
-- Reference specific neighborhoods, streets, and landmarks in the city
-- Mention local industries relevant to that city
-- Use unique copy for each city (not just find-and-replace city names)
-- Keep SimplSEO case studies and historical client work intact. SEO management is no longer a current service; do not recreate its retired landing pages.
-- Use commas, periods, colons, or parentheses instead of em dashes
-- Keep accent colors consistent with the service theme
-
-### Don't
-- Use em dashes (--) anywhere in content
-- Copy content verbatim from the parent service page
-- Use generic city references (be specific to neighborhoods)
-- Forget to update all 4 support files (services page, sitemap, llms.txt, llms-full.txt)
-
-## Nearby Cities Reference
-
-### South Bend area (areaServed)
-South Bend, Mishawaka, Granger, Osceola, Roseland
-
-### Fort Wayne area (areaServed)
-Fort Wayne, New Haven, Columbia City, Huntington, Auburn
-
-### Future cities to consider
-Elkhart, Mishawaka, Indianapolis, Bloomington, Lafayette
-
-## Quick Checklist
-
-- [ ] Create `src/app/services/[service]/[city-slug]/page.tsx`
-- [ ] Create `src/components/[City][Service]Content.tsx`
-- [ ] Add location to `ServicesPageContent.tsx`
-- [ ] Add URL to `sitemap.ts`
-- [ ] Add to `public/llms.txt`
-- [ ] Add to `public/llms-full.txt`
-- [ ] Run `npx next build` to verify
-- [ ] Check no em dashes in content
+Future city pages need a distinct visitor task and verified supporting material.
+Landmarks, city-name swaps, population, driving distance and word-count targets
+are not sufficient reasons to create them.

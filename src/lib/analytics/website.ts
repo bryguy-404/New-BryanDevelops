@@ -17,11 +17,6 @@ const PAGE_TITLES: Record<string, string> = {
   "/services/web-development": "Web Development | Bryan Develops",
   "/privacy": "Privacy | Bryan Develops",
 };
-for (const city of ["south-bend", "fort-wayne", "warsaw", "mishawaka", "laporte", "goshen", "niles"]) {
-  for (const service of ["software", "web-development"]) {
-    PAGE_TITLES[`/services/${service}/${city}`] = `${service} in ${city} | Bryan Develops`;
-  }
-}
 
 // Fixed events only: never pass form values, link text, or arbitrary URLs.
 export const EVENTS = {

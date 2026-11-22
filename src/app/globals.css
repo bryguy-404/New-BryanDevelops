@@ -79,3 +79,8 @@ body {
 body:has(#analytics-preferences) .sa-widget-container {
   z-index: 80;
 }
+
+/* Keep service section links clear of the existing fixed navigation. */
+#solutions, #project-fit, #process {
+  scroll-margin-top: 7rem;
+}

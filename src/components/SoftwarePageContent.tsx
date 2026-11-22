@@ -20,7 +20,7 @@ const solutions = [
   {
     title: "Workflow Automation",
     description:
-      "Eliminate repetitive tasks. I build systems that handle data entry, follow-ups, notifications, and reporting, so your team can focus on what actually matters.",
+      "Automate defined steps such as data entry, follow-ups, notifications, and reporting. Start with one workflow and agree how exceptions and manual review should work.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -31,7 +31,7 @@ const solutions = [
   {
     title: "Custom Dashboards",
     description:
-      "See your entire business at a glance. Real-time data, key metrics, and insights, all in one clean interface tailored to how you operate.",
+      "Bring selected business metrics into one view. The data sources, update frequency, and access permissions determine what the dashboard can show.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -64,7 +64,7 @@ const solutions = [
   {
     title: "Integrations & APIs",
     description:
-      "Connect the tools you already use. I build custom integrations that sync your CRM, email, payments, scheduling, and more. No more switching between apps.",
+      "Connect tools such as your CRM, email, payments, or scheduling system where their APIs and permissions allow it. We review access, limits, and failure handling before choosing an integration.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -85,8 +85,8 @@ const accentClasses: Record<string, { bg: string; text: string; border: string }
 const processSteps = [
   { num: "01", title: "Discovery", desc: "We talk about what's slowing your business down, what you wish was easier, and where you're losing time or money." },
   { num: "02", title: "Blueprint", desc: "I map out exactly what the software will do, how it works, and what the end result looks like, in plain English, no jargon." },
-  { num: "03", title: "Build & Test", desc: "I build it, you test it. You get access to a live version throughout development so there are zero surprises." },
-  { num: "04", title: "Launch & Support", desc: "We go live. I handle training, bug fixes, and ongoing updates. Your software keeps getting better over time." },
+  { num: "03", title: "Build & Test", desc: "I build it, you test it. You review a working version during development so we can check the workflow and address problems before launch." },
+  { num: "04", title: "Launch & Support", desc: "We plan deployment, training, and the support your team needs. Hosting, third-party service costs, bug fixes, and future changes belong in the agreed scope." },
 ];
 
 export default function SoftwarePageContent() {
@@ -101,18 +101,19 @@ export default function SoftwarePageContent() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-32 sm:py-40">
           <FadeIn>
-            <h1 className="text-emerald-400 text-sm font-semibold tracking-widest uppercase mb-4">
-              Custom Software Development — Indiana
-            </h1>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] max-w-4xl mb-6">
-              Software That Runs Your Business{" "}
+            <p className="text-emerald-400 text-sm font-semibold tracking-widest uppercase mb-4">
+              Software Development, South Bend, Indiana
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] max-w-4xl mb-6">
+              Custom Software for{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                For You.
+                Your Workflow.
               </span>
-            </h2>
+            </h1>
             <p className="text-neutral-400 text-lg sm:text-xl max-w-2xl mb-8 leading-relaxed">
-              Stop wasting hours on manual tasks. I build custom tools, automations, and platforms
-              for businesses in Indiana and across the country, so you can focus on growing instead of managing.
+              I&apos;m Bryan Arambula, a developer based in South Bend. I build web applications,
+              automations, dashboards, and integrations around the way your team works,
+              for businesses in Michiana and across the country.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -133,7 +134,7 @@ export default function SoftwarePageContent() {
           {/* Credibility line */}
           <FadeIn delay={200}>
             <p className="mt-12 text-neutral-600 text-sm">
-              Based in Indiana. Building with enterprise-grade tools trusted by companies like Google, Apple, and Meta.
+              Work directly with the developer. Explore my software products and the project process below.
             </p>
           </FadeIn>
         </div>
@@ -148,7 +149,7 @@ export default function SoftwarePageContent() {
                 Sound Familiar?
               </h2>
               <p className="text-neutral-400 text-lg max-w-xl mx-auto">
-                Business owners deal with these every day. Custom software can fix all of them.
+                Start by identifying the recurring task, the people involved, and where the current tools fall short.
               </p>
             </div>
           </FadeIn>
@@ -210,10 +211,52 @@ export default function SoftwarePageContent() {
         </div>
       </section>
 
+      <section id="project-fit" className="relative py-20 sm:py-24 bg-neutral-950 border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <FadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+              Does Your Workflow Need Custom Software?
+            </h2>
+            <p className="text-neutral-400 text-lg max-w-2xl mb-10">
+              Start with the task, rather than a feature list. An existing product or a small integration
+              may be enough. A custom build is worth discussing when a specific workflow, set of users,
+              or connection between systems needs more control.
+            </p>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { title: "Describe one workflow", text: "Walk through what starts the task, who does each step, and what a successful result looks like. Include exceptions, approvals, and the manual fallback when something fails." },
+              { title: "List systems and access", text: "Identify the tools and data involved, who can access them, and any API or export options. Integrations depend on each provider’s permissions, limits, and pricing." },
+              { title: "Define the first release", text: "Choose a small, useful version and how your team will test it. Discuss deployment, training, hosting costs, maintenance, and future changes before committing to a larger build." },
+            ].map((item, i) => (
+              <FadeIn key={item.title} delay={i * 80}>
+                <div className="p-7 rounded-2xl bg-white/[0.03] border border-white/[0.06] h-full">
+                  <h3 className="text-white text-lg font-bold mb-3">{item.title}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed">{item.text}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          <FadeIn>
+            <p className="text-neutral-400 leading-relaxed mt-10 max-w-3xl">
+              I&apos;m based in South Bend and work with businesses in Michiana and nationwide.
+              Teams in Mishawaka, Goshen, LaPorte, Niles, Warsaw, and Fort Wayne can use the same
+              project process. The scope depends on the workflow and systems involved.
+            </p>
+            <p className="text-neutral-400 leading-relaxed mt-4 max-w-3xl">
+              The product examples below include SimplAssist for customer communication and SimplSEO
+              for SEO workflows. <Link href="/engineering" className="text-indigo-400 underline underline-offset-4">Read the engineering case study</Link>{" "}
+              for implementation details. If you need a public site or online store,
+              see <Link href="/services/web-development" className="text-indigo-400 underline underline-offset-4">website development</Link>.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       <SoftwareProducts />
 
       {/* ========== PROCESS ========== */}
-      <section className="relative py-24 sm:py-32 bg-neutral-950 overflow-hidden">
+      <section id="process" className="relative py-24 sm:py-32 bg-neutral-950 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[40rem] bg-indigo-900/15 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12">

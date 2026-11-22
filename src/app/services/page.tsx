@@ -3,59 +3,46 @@ import ServicesPageContent from "@/components/ServicesPageContent";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Website & Software Services | Bryan Develops — South Bend, IN",
-  description:
-    "Explore all services offered by Bryan Develops: web design, custom software development, and app development. Serving South Bend, Fort Wayne, Mishawaka, Elkhart, and businesses nationwide.",
-  keywords: [
-    "web design South Bend",
-    "custom software South Bend",
-    "app development Indiana",
-    "web developer near me",
-    "software developer South Bend",
-    "Fort Wayne web developer",
-    "Mishawaka software development",
-    "affordable web design Indiana",
-  ],
-  openGraph: {
-    title: "Website & Software Services | Bryan Develops — South Bend, IN",
-    description:
-      "Web design, custom software, and app development for businesses in South Bend, Fort Wayne, and beyond.",
-    type: "website",
+  "title": "Website & Software Services | Bryan Develops",
+  "description": "Compare website development and custom software from Bryan Arambula in South Bend. Explore platforms, automation, integrations, and how to start a project.",
+  "alternates": {
+    "canonical": "https://bryandevelops.com/services"
   },
+  "openGraph": {
+    "title": "Website & Software Services | Bryan Develops",
+    "description": "Compare website development and custom software from Bryan Arambula in South Bend. Explore platforms, automation, integrations, and how to start a project.",
+    "url": "https://bryandevelops.com/services",
+    "type": "website"
+  }
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Bryan Develops",
-  description:
-    "Web design, custom software development, and app development for businesses in South Bend, Indiana and nationwide.",
-  url: "https://bryandevelops.com/services",
-  areaServed: [
-    { "@type": "City", name: "South Bend", addressRegion: "IN" },
-    { "@type": "City", name: "Mishawaka", addressRegion: "IN" },
-    { "@type": "City", name: "Elkhart", addressRegion: "IN" },
-    { "@type": "City", name: "Fort Wayne", addressRegion: "IN" },
-    { "@type": "City", name: "Granger", addressRegion: "IN" },
-    { "@type": "City", name: "Warsaw", addressRegion: "IN" },
-    { "@type": "City", name: "LaPorte", addressRegion: "IN" },
-    { "@type": "City", name: "Goshen", addressRegion: "IN" },
-    { "@type": "City", name: "Niles", addressRegion: "MI" },
-    { "@type": "State", name: "Indiana" },
-    { "@type": "Country", name: "US" },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "South Bend",
-    addressRegion: "IN",
-    addressCountry: "US",
+  "@type": "CollectionPage",
+  "name": "Website & Software Services",
+  "url": "https://bryandevelops.com/services",
+  "about": {
+    "@type": "ProfessionalService",
+    "name": "Bryan Develops",
+    "url": "https://bryandevelops.com"
   },
-  serviceType: [
-    "Web Design",
-    "Web Development",
-    "Custom Software Development",
-    "Mobile App Development",
-  ],
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Web Development",
+        "url": "https://bryandevelops.com/services/web-development"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Custom Software",
+        "url": "https://bryandevelops.com/services/software"
+      }
+    ]
+  }
 };
 
 export default function ServicesPage() {

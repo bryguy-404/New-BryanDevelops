@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local audit evidence contains non-public Search Console reports.
+/docs/seo-audit-2026-11-22/

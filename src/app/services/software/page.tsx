@@ -3,76 +3,35 @@ import SoftwarePageContent from "@/components/SoftwarePageContent";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title:
-    "Custom Software & App Development | Bryan Develops — Automation, AI & Business Tools",
-  description:
-    "Custom software and app development for businesses. Workflow automation, AI chatbots, mobile apps, business dashboards, and custom platforms. Serving Indiana and nationwide. Free consultation.",
-  keywords: [
-    "custom software development",
-    "software developer for small business",
-    "app development company near me",
-    "app developer for hire",
-    "mobile app development",
-    "iOS app developer Indiana",
-    "business automation software",
-    "AI chatbot for business",
-    "custom software Indiana",
-    "workflow automation Indiana",
-    "software development company",
-    "custom business tools",
-    "SaaS development",
-    "software developer near me",
-    "app development company Indiana",
-  ],
-  openGraph: {
-    title:
-      "Custom Software & App Development | Bryan Develops",
-    description:
-      "Custom software, mobile apps, AI chatbots, dashboards, and business platforms built for companies across the country.",
-    type: "website",
+  "title": "Custom Software Development in South Bend | Bryan Develops",
+  "description": "Custom software, workflow automation, dashboards, integrations, and apps by Bryan Arambula in South Bend. Explore project examples and plan your first build.",
+  "alternates": {
+    "canonical": "https://bryandevelops.com/services/software"
   },
+  "openGraph": {
+    "title": "Custom Software Development in South Bend | Bryan Develops",
+    "description": "Custom software, workflow automation, dashboards, integrations, and apps by Bryan Arambula in South Bend. Explore project examples and plan your first build.",
+    "url": "https://bryandevelops.com/services/software",
+    "type": "website"
+  }
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Bryan Develops — Custom Software & App Development",
-  description:
-    "Custom software development, mobile app development, workflow automation, AI tools, and business platforms for companies in Indiana and nationwide.",
-  url: "https://bryandevelops.com/services/software",
-  areaServed: [
-    { "@type": "City", name: "South Bend", addressRegion: "IN" },
-    { "@type": "City", name: "Mishawaka", addressRegion: "IN" },
-    { "@type": "City", name: "Elkhart", addressRegion: "IN" },
-    { "@type": "City", name: "Granger", addressRegion: "IN" },
-    { "@type": "City", name: "Fort Wayne", addressRegion: "IN" },
-    { "@type": "State", name: "Indiana" },
-    { "@type": "Country", name: "US" },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "South Bend",
-    addressRegion: "IN",
-    addressCountry: "US",
+  "@type": "Service",
+  "@id": "https://bryandevelops.com/services/software#service",
+  "name": "Custom Software Development",
+  "description": "Custom software, workflow automation, dashboards, integrations, and apps by Bryan Arambula in South Bend. Explore project examples and plan your first build.",
+  "url": "https://bryandevelops.com/services/software",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Bryan Develops",
+    "url": "https://bryandevelops.com"
   },
-  serviceType: [
-    "Custom Software Development",
-    "Mobile App Development",
-    "iOS App Development",
-    "Workflow Automation",
-    "AI Chatbot Development",
-    "Business Dashboard Development",
-    "SaaS Development",
-  ],
-  knowsAbout: [
-    "Custom Software",
-    "Mobile App Development",
-    "iOS App Development",
-    "Business Automation",
-    "AI Chatbots",
-    "SEO Software",
-    "App Development",
-  ],
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  }
 };
 
 export default function SoftwarePage() {

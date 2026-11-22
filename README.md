@@ -10,6 +10,7 @@ Next.js website for https://bryandevelops.com. Production is Vercel project
 - `npm run build -- --webpack` — production build and TypeScript checks.
 - `npm run lint` — repository lint.
 - `npm run test:analytics` — analytics consent, host/route, and payload tests.
+- `npm run check:seo -- http://127.0.0.1:4317` — HTTP checks against a running production build: redirects, service canonicals, sitemap, internal links, and server-rendered content.
 
 Use Codex's built-in browser first for visual and interaction checks. Use a
 separate Chrome tab only when an essential existing sign-in is needed.
@@ -89,3 +90,19 @@ services were added during setup.
 
 References: [Google basic consent mode](https://developers.google.com/tag-platform/security/concepts/consent-mode),
 [manual GA4 page views](https://developers.google.com/analytics/devguides/collection/ga4/views).
+
+## SEO consolidation (approved November 22, 2026)
+
+Fourteen city pages consolidate into the two existing service pages. See
+[the release scope and URL map](LOCATION-PAGES-GUIDE.md).
+The existing website-service page, homepage, About, Contact and Projects retain
+their published copy and metadata. The service chooser and software page receive
+the scoped improvements. Raw audit and Search Console evidence remains local.
+
+For verification, build with the command above, then run
+`npm run start -- --hostname 127.0.0.1 --port 4317` and `npm run check:seo`.
+Use `scripts/check-preserved-pages.py` with a pre-release baseline to compare
+protected-page copy and metadata locally and after release.
+The shared scroll reveal leaves HTML visible by default and animates only when
+an offscreen group enters view. Missing JavaScript or observation cannot leave
+the main content hidden. Preserve that behavior when changing animation.

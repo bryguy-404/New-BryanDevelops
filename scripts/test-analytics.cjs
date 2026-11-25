@@ -19,11 +19,11 @@ class Element {
 class HTMLAnchorElement extends Element {}
 class HTMLButtonElement extends Element {}
 
-function browser({ host = 'bryandevelops.com', path = '/', blocked = false, env = {} } = {}) {
+function browser({ host = 'bryandevelops.com', path = '/', search = '', blocked = false, env = {} } = {}) {
   const storage = new Map();
   const cookies = new Map([['_ga', 'existing'], ['_ga_HYM1RKG6KM', 'existing'], ['necessary', 'keep']]);
   const window = {
-    location: { hostname: host, origin: `https://${host}`, pathname: path, reload() { window.reloads++; } },
+    location: { hostname: host, origin: `https://${host}`, pathname: path, search, reload() { window.reloads++; } },
     reloads: 0,
     localStorage: {
       getItem(key) { if (blocked) throw Error('blocked'); return storage.get(key) || null; },
@@ -47,7 +47,7 @@ function browser({ host = 'bryandevelops.com', path = '/', blocked = false, env 
     removeEventListener(type, listener) { listeners.get(type)?.delete(listener); },
   };
   const exports = {};
-  vm.runInNewContext(source, { window, document, exports, process: { env }, Event, URL, Date, Element, HTMLAnchorElement, HTMLButtonElement });
+  vm.runInNewContext(source, { window, document, exports, process: { env }, Event, URL, URLSearchParams, Date, Element, HTMLAnchorElement, HTMLButtonElement });
   const commands = () => Array.from(window.dataLayer || [], args => Array.from(args));
   const events = () => commands().filter(args => args[0] === 'event');
   return { api: exports, window, document, storage, cookies, commands, events, listeners,
@@ -145,6 +145,19 @@ test('only the requested measurement ID can initialize, once even after repeated
   b.api.startAnalytics(b.api.MEASUREMENT_ID);
   assert.equal(b.commands().filter(c => c[0] === 'config').length, 1);
   assert.equal(b.commands().filter(c => c[0] === 'js').length, 1);
+});
+
+test('Tag Assistant sessions enable DebugView without exposing the debug URL or marking ordinary visits', () => {
+  for (const search of ['', '?email=private@example.com', '?gtm_debug=1795586911309&email=private@example.com']) {
+    const b = browser({ search });
+    b.api.saveConsent('granted'); b.api.startAnalytics(b.api.MEASUREMENT_ID);
+    b.api.trackPageView();
+    const settings = b.commands().find(command => command[0] === 'config')[2];
+    assert.equal(settings.debug_mode, search.includes('gtm_debug') ? true : undefined);
+    b.window.location.pathname = '/contact'; b.api.trackPageView();
+    assert.equal(b.commands().filter(command => command[0] === 'config').length, 1);
+    assert.doesNotMatch(JSON.stringify(b.commands()), /gtm_debug|private@example/);
+  }
 });
 
 test('telephone, email, CTA, and booking events contain safe destinations and the current path', () => {

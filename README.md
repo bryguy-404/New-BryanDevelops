@@ -108,6 +108,10 @@ contact submission. Validation, verification, network, and server failures must
 not produce a lead. Keep Enhanced Measurement's history/form tracking off to
 avoid duplicates alongside the explicit events.
 
+Tag Assistant's `gtm_debug` URL signal explicitly enables `debug_mode` in GA4
+configuration for that test page and its client-side navigations. The signal is
+excluded from reported page URLs; ordinary visits omit the debug setting.
+
 Google-side settings saved and rechecked during setup:
 
 - Enhanced measurement off.
@@ -119,11 +123,23 @@ Google-side settings saved and rechecked during setup:
   if Google migrates it to a unified Tag Manager container (SimplAssist needed
   destination-level overrides after that migration).
 
-Verification: production build, targeted lint, six analytics boundary tests,
+Original installation verification (November 13): production build, targeted lint, six analytics boundary tests,
 desktop and 390px/320px browser layouts, saved allow/deny choices, preference
 reopening, privacy navigation, and local tag exclusion passed. The existing
 SimplAssist widget rejects local configuration requests, so a real chat-open
 check requires the production hostname. No test contact email was sent.
+
+Live lead-event verification (November 25): all nine public pages served the
+correct measurement ID once in page source. Tag Assistant confirmed one loader,
+manual page views on initial load and client navigation, and the requested CTA,
+telephone, email, and successful-contact events with their parameters. GA4
+Realtime received those events. An empty-form validation attempt produced no
+lead; one clearly labeled test inquiry succeeded and produced one `generate_lead`.
+The captured lead payload contained none of the entered test form values.
+Enhanced measurement remained off with zero connected site tags. Live SEO
+regressions passed and the production runtime error scan returned no errors.
+The subsequent DebugView signal change passed the production build, targeted
+lint, and all 18 analytics/contact tests before deployment.
 
 Reports cover consenting visitors from installation onward, not past traffic
 or every visitor. Live collection verification should check Google Realtime,

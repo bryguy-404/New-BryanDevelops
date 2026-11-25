@@ -138,6 +138,9 @@ export function startAnalytics(id: string) {
     window.gtag("consent", "update", { analytics_storage: "granted" });
     const settings = {
       ...pageContext(window.location.pathname, document.referrer),
+      // Tag Assistant supplies this signal in its test URL. Keep the signal
+      // out of page_location while explicitly enabling GA4 DebugView.
+      ...(new URLSearchParams(window.location.search).has("gtm_debug") ? { debug_mode: true } : {}),
       send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false,
       cookie_domain: "bryandevelops.com", cookie_expires: CONSENT_MAX_AGE_MS / 1000,
       cookie_flags: "SameSite=Lax;Secure",

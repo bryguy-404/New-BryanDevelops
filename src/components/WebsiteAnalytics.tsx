@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ConsentCelebration, ConsentPeek } from "@/components/ConsentMascot";
 import {
   CONSENT_KEY, CONSENT_EVENT, SETTINGS_EVENT, MEASUREMENT_ID,
-  clearAnalyticsCookies, consentTimeRemaining, eventForLink, isMeasurementId, isProductionLocation,
+  clearAnalyticsCookies, consentTimeRemaining, isMeasurementId, isProductionLocation,
   isPublicPath, pauseAnalytics, readConsent, saveConsent, startAnalytics,
-  trackEvent, trackPageView, type Consent,
+  trackClick, trackPageView, type Consent,
 } from "@/lib/analytics/website";
 
 const subscribeReady = () => () => {};
@@ -52,7 +53,7 @@ function subscribeConsent(notify: () => void) {
   };
 }
 
-export default function WebsiteAnalytics() {
+export default function WebsiteAnalytics({ measurementId }: { measurementId: typeof MEASUREMENT_ID }) {
   const pathname = usePathname();
   const ready = useSyncExternalStore(subscribeReady, clientReady, serverReady);
   const consent = useSyncExternalStore(subscribeConsent, readConsent, serverConsent);
@@ -80,33 +81,13 @@ export default function WebsiteAnalytics() {
 
   useEffect(() => {
     if (!eligible || consent !== "granted") { pauseAnalytics(); return; }
-    if (startAnalytics(MEASUREMENT_ID)) {
-      trackPageView();
-      if (!document.getElementById("bryan-google-analytics")) {
-        const script = document.createElement("script");
-        script.id = "bryan-google-analytics";
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
-        document.head.appendChild(script);
-      }
-    }
-  }, [eligible, consent, pathname]);
+    if (startAnalytics(measurementId)) trackPageView();
+  }, [eligible, consent, pathname, measurementId]);
 
   useEffect(() => {
     if (!eligible || consent !== "granted") return;
-    const click = (event: MouseEvent) => {
-      if (!(event.target instanceof Element)) return;
-      const control = event.target.closest("a, button");
-      if (control?.matches(".sa-widget-btn") && !document.querySelector(".sa-widget-panel.sa-visible")) {
-        trackEvent("chat_open");
-      }
-      if (control instanceof HTMLAnchorElement) {
-        const key = eventForLink(control.getAttribute("href") || "", window.location.origin);
-        if (key) trackEvent(key);
-      }
-    };
-    document.addEventListener("click", click, true);
-    return () => document.removeEventListener("click", click, true);
+    document.addEventListener("click", trackClick, true);
+    return () => document.removeEventListener("click", trackClick, true);
   }, [eligible, consent]);
 
   function choose(choice: Consent) {
@@ -132,9 +113,18 @@ export default function WebsiteAnalytics() {
   }, []);
 
   const celebrating = celebration !== null;
-  if ((!eligible && !preview) || (consent !== null && !showChoices && !celebrating)) return null;
+  const tag = eligible && consent === "granted" ? (
+    <Script
+      id="bryan-google-analytics"
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+      strategy="afterInteractive"
+    />
+  ) : null;
+  if ((!eligible && !preview) || (consent !== null && !showChoices && !celebrating)) return tag;
   return (
     <>
+      {tag}
       <div className="fixed bottom-24 left-4 right-4 z-[90] sm:bottom-5 sm:right-auto sm:max-w-md">
         {celebrating ? null : <ConsentPeek />}
         <section id="analytics-preferences" ref={panel} tabIndex={-1} aria-labelledby="analytics-heading"

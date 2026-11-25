@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import WebsiteAnalytics from "@/components/WebsiteAnalytics";
+import { MEASUREMENT_ID } from "@/lib/analytics/website";
 import "./globals.css";
 
 const inter = Inter({
@@ -73,7 +74,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased`}>
         {children}
-        <WebsiteAnalytics />
+        <WebsiteAnalytics measurementId={MEASUREMENT_ID} />
         <Script
           src="https://simplassist.com/widget/embed.js"
           data-business-id="0e2bf188-ab53-4d3b-8e1a-7aac49125811"

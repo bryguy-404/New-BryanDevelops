@@ -49,8 +49,8 @@ export default function ContactPageContent() {
         body: JSON.stringify({ ...formData, turnstileToken }),
       });
 
-      if (!res.ok) {
-        const result = await res.json().catch(() => null);
+      const result = await res.json().catch(() => null);
+      if (!res.ok || result?.success !== true) {
         setError(result?.error || "Something went wrong. Please try again or email me directly.");
         return;
       }

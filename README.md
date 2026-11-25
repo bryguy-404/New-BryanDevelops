@@ -54,10 +54,11 @@ own existing GA4 property, verified in Google Analytics:
 - Public measurement ID: `G-HYM1RKG6KM`; Google tag: `GT-5TC393TR`.
 - Reports: https://analytics.google.com/analytics/web/#/a343774761p475909677/reports/intelligenthome
 
-The public ID is the default in `src/lib/analytics/website.ts`. Override at build
-time with `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`; an empty value disables tracking and
-the consent prompt. This ID is not a credential. SMTP configuration stays in
-the existing private environment variables.
+The public ID is pinned to `G-HYM1RKG6KM` in `src/lib/analytics/website.ts` and
+passed from the shared root layout, so it is visible in page source. Environment
+variables cannot override it. The shared analytics component loads one
+`next/script` tag with `afterInteractive` after consent. This ID is not a credential.
+SMTP configuration stays in the existing private environment variables.
 
 The Google tag loads only after explicit permission on `bryandevelops.com` or
 `www.bryandevelops.com`, and only on the enumerated public routes. Local
@@ -70,6 +71,8 @@ unavailable browser storage also stop collection.
 
 Manual page views are deduplicated by pathname. Query strings, fragments,
 dynamic page titles, arbitrary link text, and form/chat contents are excluded.
+Click events include the public link destination without query strings,
+fragments, or credentials; CTA text is restricted to reviewed static labels.
 External referrers retain only their origin; internal page transitions use the
 previous public path. Google signals and advertising personalization are off in
 the tag settings sent by the site. No session recording is installed.
@@ -87,10 +90,23 @@ Do not swap in third-party characters or artwork.
 | `software_click` | A link to SimplAssist or SimplSEO is clicked (`product`). |
 | `software_preview` | A different product preview tab is selected (`product`, `preview`), including keyboard navigation. |
 | `file_download` | A Captura or PinMemories download link is clicked; it does not prove the download finished. |
-| `contact_click` | Contact-page, telephone, or email link click (`method`); not proof of a completed inquiry or connected call. |
+| `contact_click` | Existing contact-page link click (`method`); retained for report continuity. |
+| `phone_click` / `email_click` | Any telephone/email link click (`link_url`, `page_path`); not proof of a connected call or sent email. |
+| `cta_click` | A main contact/quote CTA is clicked (`cta_text`, `link_url`, `page_path`). |
+| `booking_click` | A scheduling link is clicked (`link_url`, `page_path`). No scheduling link currently exists; delegated tracking covers Calendly, Cal.com, Acuity, YouCanBookMe, and Setmore links added later. |
 | `chat_open` | The existing SimplAssist chat launcher is opened; no messages are recorded in Analytics. |
 | `contact_form_start` | First edit to the contact form while analytics is enabled. |
-| `generate_lead` | The contact API returns success after the email provider accepts the inquiry; not a sale or guaranteed inbox delivery. |
+| `generate_lead` | The contact API returns a successful HTTP response and `{ success: true }` after the email provider accepts the inquiry (`form_name: contact`, `page_path`); not a sale or guaranteed inbox delivery. |
+
+Lead-event update (November 25, 2026): one shared delegated click listener covers
+telephone, email, CTA, and booking links, including links added after hydration.
+No form values enter analytics. After deployment, view source on each public
+route and search for `G-HYM1RKG6KM`. Allow analytics, then use GA4 Realtime or a
+Tag Assistant debug session with DebugView to verify one `page_view` per navigation,
+each link event with its parameters, and `generate_lead` only after a successful
+contact submission. Validation, verification, network, and server failures must
+not produce a lead. Keep Enhanced Measurement's history/form tracking off to
+avoid duplicates alongside the explicit events.
 
 Google-side settings saved and rechecked during setup:
 

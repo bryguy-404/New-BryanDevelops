@@ -1,5 +1,5 @@
-// Public GA4 web stream for bryandevelops.com, verified in the owner's account.
-export const MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? "G-HYM1RKG6KM";
+// Pin this site's stream so a stale environment variable cannot send data elsewhere.
+export const MEASUREMENT_ID = "G-HYM1RKG6KM";
 export const CONSENT_KEY = "bd-analytics-consent-v1";
 export const SETTINGS_EVENT = "bd-analytics-settings";
 export const CONSENT_EVENT = "bd-analytics-consent-change";
@@ -18,11 +18,13 @@ const PAGE_TITLES: Record<string, string> = {
   "/privacy": "Privacy | Bryan Develops",
 };
 
-// Fixed events only: never pass form values, link text, or arbitrary URLs.
+// Fixed form/product labels; click URLs and CTA labels are sanitized below.
 export const EVENTS = {
   contact_page_click: ["contact_click", { method: "contact_page" }],
-  phone_click: ["contact_click", { method: "phone" }],
-  email_click: ["contact_click", { method: "email" }],
+  phone_click: ["phone_click", {}],
+  email_click: ["email_click", {}],
+  cta_click: ["cta_click", {}],
+  booking_click: ["booking_click", {}],
   simplassist_click: ["software_click", { product: "SimplAssist" }],
   simplseo_click: ["software_click", { product: "SimplSEO" }],
   captura_download: ["file_download", { file_name: "Captura.dmg", file_extension: "dmg" }],
@@ -34,7 +36,7 @@ export const EVENTS = {
   assist_calendar: ["software_preview", { product: "SimplAssist", preview: "Calendar" }],
   chat_open: ["chat_open", {}],
   contact_form_start: ["contact_form_start", { form_name: "contact" }],
-  contact_form_success: ["generate_lead", { method: "contact_form" }],
+  contact_form_success: ["generate_lead", { form_name: "contact", method: "contact_form" }],
 } as const;
 export type WebsiteEvent = keyof typeof EVENTS;
 
@@ -112,6 +114,7 @@ export function safeReferrer(raw: string) {
 }
 export function pageContext(path: string, referrer: string) {
   return {
+    page_path: isPublicPath(path) ? path : "/",
     page_location: `https://bryandevelops.com${isPublicPath(path) ? path : "/"}`,
     page_title: PAGE_TITLES[path] || "Bryan Develops",
     page_referrer: safeReferrer(referrer),
@@ -122,7 +125,7 @@ function canMeasure() {
     isProductionLocation(window.location.hostname, window.location.pathname) && readConsent() === "granted";
 }
 export function startAnalytics(id: string) {
-  if (!isMeasurementId(id) || !canMeasure()) return false;
+  if (id !== MEASUREMENT_ID || !canMeasure()) return false;
   if (!activeId) {
     activeId = id;
     window.dataLayer = window.dataLayer || [];
@@ -157,18 +160,43 @@ export function trackPageView() {
   window.gtag?.("set", context);
   window.gtag?.("event", "page_view", context);
 }
-export function trackEvent(key: WebsiteEvent): boolean {
+function sendEvent(key: WebsiteEvent, linkParams: { link_url?: string; cta_text?: string } = {}): boolean {
   if (!activeId || paused || !canMeasure() || !Object.hasOwn(EVENTS, key)) return false;
   const [event, params] = EVENTS[key];
-  window.gtag?.("event", event, { ...pageContext(window.location.pathname, document.referrer), ...params });
+  window.gtag?.("event", event, { ...pageContext(window.location.pathname, document.referrer), ...params, ...linkParams });
   return true;
 }
 
-export function eventForLink(href: string, origin: string): WebsiteEvent | null {
-  if (href === "tel:+15743236945") return "phone_click";
-  if (href === "mailto:bryan@bryandevelops.com") return "email_click";
+export function trackEvent(key: WebsiteEvent): boolean {
+  return sendEvent(key);
+}
+
+const BOOKING_HOSTS = ["calendly.com", "cal.com", "acuityscheduling.com", "youcanbook.me", "setmore.com"];
+// Only reviewed, static CTA labels can enter reports, never arbitrary/user-entered text.
+const CTA_LABELS = new Set([
+  "contact", "contact me", "get started", "get in touch", "let's talk", "let's talk.",
+  "let's talk about your project", "get a quote", "get a free quote", "get a free consultation",
+  "book a call", "start a project", "start your project", "send message",
+]);
+
+export function safeLinkUrl(href: string, origin: string): string {
   try {
     const url = new URL(href, origin);
+    // Retain the public link destination, excluding prefilled mail bodies, booking
+    // form values, query strings, fragments, and URL credentials.
+    if (["tel:", "mailto:"].includes(url.protocol)) return `${url.protocol}${url.pathname}`;
+    if (["https:", "http:"].includes(url.protocol)) return `${url.origin}${url.pathname}`;
+  } catch { /* Ignore invalid URLs. */ }
+  return "";
+}
+
+export function eventForLink(href: string, origin: string): WebsiteEvent | null {
+  try {
+    const url = new URL(href, origin);
+    if (url.protocol === "tel:") return "phone_click";
+    if (url.protocol === "mailto:") return "email_click";
+    if (!["https:", "http:"].includes(url.protocol)) return null;
+    if (BOOKING_HOSTS.some(host => url.hostname === host || url.hostname.endsWith(`.${host}`))) return "booking_click";
     if (url.origin === origin) {
       if (url.pathname === "/contact") return "contact_page_click";
       if (url.pathname === "/Captura.dmg") return "captura_download";
@@ -180,4 +208,39 @@ export function eventForLink(href: string, origin: string): WebsiteEvent | null 
     }
   } catch { /* Ignore non-URL controls. */ }
   return null;
+}
+
+export function trackLink(href: string, text: string, origin: string) {
+  const link_url = safeLinkUrl(href, origin);
+  if (!link_url) return;
+  const key = eventForLink(href, origin);
+  if (key) sendEvent(key, { link_url });
+  const label = ctaLabel(text);
+  if (label || key === "contact_page_click") {
+    sendEvent("cta_click", { cta_text: label || "Contact", link_url });
+  }
+}
+
+function ctaLabel(text: string): string | null {
+  const label = text.replace(/\s+/g, " ").trim();
+  return CTA_LABELS.has(label.toLowerCase().replace(/’/g, "'")) ? label : null;
+}
+
+// One delegated listener covers nested icons and links added after hydration.
+export function trackClick(event: MouseEvent) {
+  if (!(event.target instanceof Element)) return;
+  const control = event.target.closest("a, button");
+  if (!control) return;
+  if (control.matches(".sa-widget-btn") && !document.querySelector(".sa-widget-panel.sa-visible")) {
+    trackEvent("chat_open");
+  }
+  const label = control.textContent || "";
+  if (control instanceof HTMLAnchorElement) {
+    trackLink(control.getAttribute("href") || "", label, window.location.origin);
+  } else if (control instanceof HTMLButtonElement && !control.disabled) {
+    const cta_text = ctaLabel(label);
+    if (cta_text) sendEvent("cta_click", {
+      cta_text, link_url: safeLinkUrl(window.location.pathname, window.location.origin),
+    });
+  }
 }

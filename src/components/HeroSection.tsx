@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FloatingDots from "./CursorDots";
 import FadeIn from "./FadeIn";
+import { ArrowUpRight } from "lucide-react";
 
 const cyclingWords = ["Software", "Web Design", "Development"];
 
@@ -26,6 +27,31 @@ const trustedBy = [
   "EME Flooring",
   "Opulent Outdoors",
   "CPK Media Communications",
+];
+
+const featured = [
+  {
+    kind: "Featured Website",
+    accent: "text-indigo-300",
+    href: "#projects",
+    external: false,
+    address: "driveandshine.com",
+    title: "Drive & Shine",
+    tags: ["Web Design", "SEO"],
+    desc: "Modern redesign with custom forms and full mobile optimization.",
+    stats: [["3x", "Traffic"], ["Top 5", "Google"], ["2 Mo", "Delivered"]],
+  },
+  {
+    kind: "Featured Software",
+    accent: "text-orange-300",
+    href: "https://simplassist.com",
+    external: true,
+    address: "simplassist.com",
+    title: "SimplAssist",
+    tags: ["Software", "AI"],
+    desc: "Texts back missed calls, chats 24/7, and keeps every lead in one inbox.",
+    stats: [["24/7", "Coverage"], ["1", "Inbox"], ["Live", "Now"]],
+  },
 ];
 
 export default function HeroSection() {
@@ -115,62 +141,48 @@ export default function HeroSection() {
           </div>
 
           {/* Right — Featured Website + Featured Software */}
-          <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:gap-5 lg:gap-6 pb-2 sm:pb-4 lg:items-center lg:pb-0 lg:justify-end">
-            {/* Featured Website — Drive & Shine */}
-            <FadeIn delay={200}>
-            <Link href="#projects" className="group block w-64 sm:w-48 lg:w-64 min-w-0">
-              <div className="relative">
-                <div className="absolute -top-2 left-2 sm:-top-3 sm:left-3 lg:-top-3.5 lg:left-4 z-30 inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 lg:px-3 lg:py-1.5 rounded-full bg-indigo-500/20 backdrop-blur-md border border-indigo-400/30 text-[10px] sm:text-[9px] lg:text-[11px] font-semibold text-indigo-200 tracking-wider uppercase">
-                  <span className="w-0.5 h-0.5 sm:w-1 sm:h-1 lg:w-1.5 lg:h-1.5 rounded-full bg-indigo-400 hidden sm:block"></span>
-                  Featured Website
-                </div>
-                <div className="relative p-4 pt-5 sm:p-3.5 sm:pt-5 lg:p-5 lg:pt-7 rounded-xl sm:rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)] group-hover:border-white/25 group-hover:bg-white/[0.09] transition-all duration-300">
-                <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-bl from-white/[0.08] to-transparent rounded-bl-full pointer-events-none"></div>
-                <h3 className="text-white text-sm sm:text-sm lg:text-lg font-bold mb-1 sm:mb-1 lg:mb-1.5 relative z-10">Drive &amp; Shine</h3>
-                <div className="flex items-center gap-1.5 lg:gap-2 mb-2 sm:mb-1.5 lg:mb-2.5 flex-wrap">
-                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">Web Design</span>
-                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">SEO</span>
-                </div>
-                <p className="text-neutral-300 text-xs sm:text-[10px] lg:text-sm leading-relaxed mb-2.5 sm:mb-2 lg:mb-3 relative z-10">
-                Modern redesign with custom forms and full mobile optimization.
-                </p>
-                <div className="flex items-center gap-4 sm:gap-3 lg:gap-5 pt-3 sm:pt-2 lg:pt-3 border-t border-white/10">
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">3x</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Traffic</p></div>
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">Top 5</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Google</p></div>
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">2 Mo</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Delivered</p></div>
-                </div>
-              </div>
-              </div>
-            </Link>
-            </FadeIn>
-
-            {/* Featured Software — SimplAssist */}
-            <FadeIn delay={400}>
-            <Link href="https://simplassist.com" target="_blank" rel="noopener noreferrer" className="group block w-64 sm:w-48 lg:w-64 min-w-0">
-              <div className="relative">
-                <div className="absolute -top-2 left-2 sm:-top-3 sm:left-3 lg:-top-3.5 lg:left-4 z-30 inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 lg:px-3 lg:py-1.5 rounded-full bg-orange-500/20 backdrop-blur-md border border-orange-400/30 text-[10px] sm:text-[9px] lg:text-[11px] font-semibold text-orange-200 tracking-wider uppercase">
-                  <span className="w-0.5 h-0.5 sm:w-1 sm:h-1 lg:w-1.5 lg:h-1.5 rounded-full bg-orange-400 hidden sm:block"></span>
-                  Featured Software
-                </div>
-                <div className="relative p-4 pt-5 sm:p-3.5 sm:pt-5 lg:p-5 lg:pt-7 rounded-xl sm:rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)] group-hover:border-white/25 group-hover:bg-white/[0.09] transition-all duration-300">
-                <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-bl from-white/[0.08] to-transparent rounded-bl-full pointer-events-none"></div>
-                <h3 className="text-white text-sm sm:text-sm lg:text-lg font-bold mb-1 sm:mb-1 lg:mb-1.5 relative z-10">SimplAssist</h3>
-                <div className="flex items-center gap-1.5 lg:gap-2 mb-2 sm:mb-1.5 lg:mb-2.5">
-                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">Software</span>
-                  <span className="px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] sm:text-[9px] lg:text-xs font-medium rounded-full bg-white/10 text-neutral-200 border border-white/10">AI</span>
-                </div>
-                <p className="text-neutral-300 text-xs sm:text-[10px] lg:text-sm leading-relaxed mb-2.5 sm:mb-2 lg:mb-3 relative z-10">
-                  Texts back missed calls, chats 24/7, and keeps every lead in one inbox.
-                </p>
-                <div className="flex items-center gap-4 sm:gap-3 lg:gap-5 pt-3 sm:pt-2 lg:pt-3 border-t border-white/10">
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">24/7</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Coverage</p></div>
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">1</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Inbox</p></div>
-                  <div><p className="text-white text-sm sm:text-xs lg:text-base font-bold">Live</p><p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">Now</p></div>
-                </div>
-              </div>
-              </div>
-            </Link>
-            </FadeIn>
+          <div className="relative flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:gap-5 lg:gap-6 pb-2 sm:pb-4 lg:items-center lg:pb-0 lg:justify-end">
+            {featured.map((item, i) => (
+              <FadeIn key={item.title} delay={200 + i * 200}>
+                <Link
+                  href={item.href}
+                  {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="card-dark is-glass group block w-64 sm:w-48 lg:w-64 min-w-0 overflow-hidden"
+                >
+                  {/* Window bar, so each card reads as the real site or app it points to */}
+                  <div className="window-bar px-3 py-2 lg:px-4 lg:py-2.5">
+                    <span className="window-dots" aria-hidden="true"><i /><i /><i /></span>
+                    {/* Phones have less height, so the label moves up here in place of the address */}
+                    <span className={`sm:hidden ${item.accent} text-[10px] font-semibold tracking-wider uppercase`}>{item.kind}</span>
+                    <span className="hidden sm:inline font-code truncate text-[9px] lg:text-[11px]">{item.address}</span>
+                    <ArrowUpRight
+                      className="ml-auto size-3 lg:size-3.5 shrink-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div className="px-4 py-2.5 sm:p-3.5 lg:p-5">
+                    <p className={`hidden sm:block ${item.accent} text-[9px] lg:text-[11px] font-semibold tracking-wider uppercase mb-1 lg:mb-1.5`}>
+                      {item.kind}
+                    </p>
+                    <h3 className="text-white text-sm lg:text-lg font-bold mb-1 lg:mb-1.5">{item.title}</h3>
+                    <p className="tag-line text-neutral-400 text-[10px] sm:text-[9px] lg:text-xs font-medium mb-2 sm:mb-1.5 lg:mb-2.5">
+                      {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                    </p>
+                    <p className="text-neutral-300 text-xs sm:text-[10px] lg:text-sm leading-relaxed mb-2 lg:mb-3">
+                      {item.desc}
+                    </p>
+                    <div className="grid grid-cols-3 pt-2 lg:pt-3 border-t border-white/10">
+                      {item.stats.map(([value, label]) => (
+                        <div key={label}>
+                          <p className="text-white text-sm sm:text-xs lg:text-base font-bold">{value}</p>
+                          <p className="text-neutral-400 text-[9px] sm:text-[8px] lg:text-[11px]">{label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </div>

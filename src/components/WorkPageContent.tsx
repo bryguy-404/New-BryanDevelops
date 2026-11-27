@@ -413,7 +413,7 @@ export default function WorkPageContent() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className={`group relative flex flex-col rounded-2xl bg-white/70 backdrop-blur-xl border border-white shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] ${c.hoverShadow} hover:-translate-y-1 transition-all duration-300 overflow-hidden`}
+                className={`group relative flex flex-col card-light overflow-hidden`}
               >
                 {/* Logo banner */}
                 <div className="w-full h-20 bg-neutral-50 border-b border-neutral-100 flex items-center justify-center px-6">
@@ -463,14 +463,9 @@ export default function WorkPageContent() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                  <div className="tag-line mb-4 text-[11px] font-medium text-neutral-500">
                     {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`px-2.5 py-0.5 text-[11px] font-medium rounded-full ${c.tagBg} ${c.tagText} border ${c.tagBorder}`}
-                      >
-                        {tag}
-                      </span>
+                      <span key={tag}>{tag}</span>
                     ))}
                   </div>
 
@@ -521,7 +516,7 @@ export default function WorkPageContent() {
               <div className="flex flex-wrap justify-center gap-3">
                 <a
                   href="/contact"
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-indigo-700 hover:to-purple-700 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                  className="header-cta is-large"
                 >
                   Let&apos;s Talk
                 </a>

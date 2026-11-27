@@ -50,12 +50,9 @@ function Download() {
 
 function Tags({ items, dark = false }: { items: string[]; dark?: boolean }) {
   return (
-    <ul aria-label="Technologies" className="flex flex-wrap gap-2">
+    <ul aria-label="Technologies" className={`tag-line text-xs font-medium ${dark ? "text-neutral-400" : "text-neutral-500"}`}>
       {items.map((item) => (
-        <li
-          key={item}
-          className={`rounded-full border px-3 py-1 text-xs font-medium ${dark ? "border-white/10 bg-white/[0.04] text-neutral-300" : "border-neutral-200 bg-neutral-50 text-neutral-600"}`}
-        >
+        <li key={item}>
           {item}
         </li>
       ))}
@@ -516,7 +513,7 @@ export default function EngineeringPageContent({
               {skills.map((skill) => (
                 <div
                   key={skill.number}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                  className="card-dark p-6"
                 >
                   <span className="text-xs font-medium text-indigo-400">
                     {skill.number}
@@ -635,7 +632,7 @@ export default function EngineeringPageContent({
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a
                 href="mailto:bryan@bryandevelops.com"
-                className="inline-flex min-h-12 items-center gap-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(99,102,241,0.2)] transition-colors hover:from-indigo-700 hover:to-purple-700"
+                className="header-cta is-large"
               >
                 Get in touch <Arrow />
               </a>

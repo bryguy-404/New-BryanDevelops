@@ -118,7 +118,7 @@ export default function SoftwarePageContent() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="px-7 py-3.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-sm tracking-wide hover:from-indigo-600 hover:to-purple-600 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.3)]"
+                className="header-cta is-large"
               >
                 Start a Project
               </Link>
@@ -157,7 +157,7 @@ export default function SoftwarePageContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {painPoints.map((p, i) => (
               <FadeIn key={i} delay={(i % 3) * 100}>
-                <div className="flex items-center gap-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300">
+                <div className="card-dark flex items-center gap-4 p-5">
                   <div className="w-10 h-10 shrink-0 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -197,7 +197,7 @@ export default function SoftwarePageContent() {
                   delay={(i < 2 ? i : i - 2) * 100}
                   className={i < 2 ? "lg:col-span-3" : i === solutions.length - 1 ? "md:col-span-2 lg:col-span-2" : "lg:col-span-2"}
                 >
-                  <div className="relative p-7 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 h-full group">
+                  <div className="card-dark is-interactive p-7 h-full group">
                     <div className={`w-12 h-12 rounded-xl ${ac.bg} border ${ac.border} flex items-center justify-center mb-5 ${ac.text} group-hover:scale-110 transition-transform`}>
                       {sol.icon}
                     </div>
@@ -230,7 +230,7 @@ export default function SoftwarePageContent() {
               { title: "Define the first release", text: "Choose a small, useful version and how your team will test it. Discuss deployment, training, hosting costs, maintenance, and future changes before committing to a larger build." },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 80}>
-                <div className="p-7 rounded-2xl bg-white/[0.03] border border-white/[0.06] h-full">
+                <div className="card-dark p-7 h-full">
                   <h3 className="text-white text-lg font-bold mb-3">{item.title}</h3>
                   <p className="text-neutral-400 text-sm leading-relaxed">{item.text}</p>
                 </div>
@@ -275,7 +275,7 @@ export default function SoftwarePageContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {processSteps.map((step, i) => (
               <FadeIn key={step.num} delay={i * 100}>
-                <div className="relative p-7 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] transition-all duration-300 h-full group">
+                <div className="card-dark is-interactive p-7 h-full group">
                   <div className="text-4xl font-black text-white/[0.06] absolute top-5 right-5 group-hover:text-white/10 transition-colors">
                     {step.num}
                   </div>
@@ -304,7 +304,7 @@ export default function SoftwarePageContent() {
                   Need an app for your business or a personal idea brought to life? I design and develop iOS apps from concept to App Store, right here in Indiana.
                 </p>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.06]">
+              <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-neutral-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                 </svg>
@@ -342,7 +342,7 @@ export default function SoftwarePageContent() {
                   href={app.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/[0.08] transition-all duration-300 group"
+                  className="card-dark block p-6 group"
                 >
                   <div className="flex items-start gap-4 mb-3">
                     <Image
@@ -354,7 +354,8 @@ export default function SoftwarePageContent() {
                     />
                     <div className="flex items-center justify-between flex-1 min-w-0">
                       <h3 className="text-white font-semibold group-hover:text-indigo-300 transition-colors">{app.name}</h3>
-                      <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex-shrink-0">
+                      <span className="flex items-center gap-1.5 text-[11px] font-medium text-emerald-400 flex-shrink-0">
+                        <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
                         {app.status}
                       </span>
                     </div>
@@ -395,7 +396,7 @@ export default function SoftwarePageContent() {
                   Lightweight macOS utilities I designed and built. Free to download and use.
                 </p>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.06]">
+              <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
@@ -423,7 +424,7 @@ export default function SoftwarePageContent() {
                 <a
                   href={app.url}
                   download
-                  className="block p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/[0.08] transition-all duration-300 group"
+                  className="card-dark block p-6 group"
                 >
                   <div className="flex items-start gap-4 mb-3">
                     <Image
@@ -435,7 +436,8 @@ export default function SoftwarePageContent() {
                     />
                     <div className="flex items-center justify-between flex-1 min-w-0">
                       <h3 className="text-white font-semibold group-hover:text-indigo-300 transition-colors">{app.name}</h3>
-                      <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex-shrink-0">
+                      <span className="flex items-center gap-1.5 text-[11px] font-medium text-emerald-400 flex-shrink-0">
+                        <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
                         Free
                       </span>
                     </div>
@@ -472,7 +474,7 @@ export default function SoftwarePageContent() {
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-sm tracking-wide hover:from-indigo-600 hover:to-purple-600 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.3)]"
+                  className="header-cta is-large"
                 >
                   Get a Free Quote
                 </Link>

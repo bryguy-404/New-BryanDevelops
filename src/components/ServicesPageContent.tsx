@@ -105,7 +105,7 @@ export default function ServicesPageContent() {
               const ac = accentMap[svc.accent];
               return (
                 <FadeIn key={svc.title} delay={i * 100}>
-                  <div className="relative rounded-2xl bg-white/[0.03] border border-white/[0.06] p-8 sm:p-10 hover:bg-white/[0.05] transition-all duration-300 group">
+                  <div className="card-dark p-8 sm:p-10 group">
                     <div className="flex flex-col lg:flex-row lg:items-start gap-8">
                       {/* Left: Icon + Info */}
                       <div className="flex-1">
@@ -122,14 +122,9 @@ export default function ServicesPageContent() {
                           {svc.desc}
                         </p>
 
-                        <div className="flex flex-wrap gap-2 mb-6">
+                        <div className={`tag-line mb-6 text-xs font-medium ${ac.badgeText}`}>
                           {svc.highlights.map((h) => (
-                            <span
-                              key={h}
-                              className={`px-3 py-1 text-xs font-medium rounded-full ${ac.badgeBg} ${ac.badgeText} border ${ac.border}`}
-                            >
-                              {h}
-                            </span>
+                            <span key={h}>{h}</span>
                           ))}
                         </div>
 
@@ -268,7 +263,7 @@ export default function ServicesPageContent() {
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-indigo-700 hover:to-purple-700 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                  className="header-cta is-large"
                 >
                   Get a Free Consultation
                 </Link>

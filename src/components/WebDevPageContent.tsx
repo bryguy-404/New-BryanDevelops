@@ -278,7 +278,7 @@ export default function WebDevPageContent() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/contact"
-                className="px-7 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-indigo-700 hover:to-purple-700 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                className="header-cta is-large"
               >
                 Get a Free Quote
               </Link>
@@ -288,9 +288,9 @@ export default function WebDevPageContent() {
               >
                 See My Work
               </Link>
-              <div className="hidden sm:flex items-center gap-2 ml-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200">
+              <div className="hidden sm:flex items-center gap-2 ml-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-emerald-700 text-xs font-semibold">Budget-friendly pricing</span>
+                <span className="text-neutral-600 text-sm font-medium">Budget-friendly pricing</span>
               </div>
             </div>
           </FadeIn>
@@ -425,10 +425,9 @@ export default function WebDevPageContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeIn>
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span className="text-emerald-700 text-xs font-semibold tracking-wider uppercase">What Makes Me Different</span>
-                </div>
+                <p className="text-indigo-600 text-sm font-semibold tracking-widest uppercase mb-3">
+                  What Makes Me Different
+                </p>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 tracking-tight mb-4">
                   I Teach You How to Run It
                 </h2>
@@ -460,7 +459,6 @@ export default function WebDevPageContent() {
 
             <FadeIn delay={200}>
               <div className="relative rounded-2xl bg-white border border-neutral-200/80 shadow-lg p-8">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-emerald-100 to-transparent rounded-bl-full pointer-events-none" />
                 <div className="flex items-center gap-2 mb-6">
                   <div className="w-3 h-3 rounded-full bg-red-400/60" />
                   <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
@@ -541,7 +539,7 @@ export default function WebDevPageContent() {
                 </div>
                 <Link
                   href="/contact"
-                  className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-indigo-700 hover:to-purple-700 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                  className="header-cta is-large"
                 >
                   Let&apos;s Talk About Your Project
                 </Link>
@@ -605,7 +603,7 @@ export default function WebDevPageContent() {
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-indigo-700 hover:to-purple-700 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                  className="header-cta is-large"
                 >
                   Get a Free Quote
                 </Link>

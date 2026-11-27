@@ -376,7 +376,7 @@ export default function ProjectsSection() {
                 href={project.url}
                 target={project.url.startsWith("http") ? "_blank" : undefined}
                 rel={project.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative flex flex-col shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start max-sm:snap-center max-sm:snap-always rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-white/20 hover:bg-white/[0.07] hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group relative flex flex-col shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start max-sm:snap-center max-sm:snap-always card-dark overflow-hidden"
               >
                 {/* Top gradient line */}
                 <div className={`h-[2px] w-full bg-gradient-to-r ${c.line} opacity-50 group-hover:opacity-100 transition-opacity`} />
@@ -416,11 +416,9 @@ export default function ProjectsSection() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-3">
+                  <div className="tag-line mb-3 text-[11px] font-medium text-neutral-400">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-0.5 text-[11px] font-medium rounded-full bg-white/[0.06] text-neutral-300 border border-white/10">
-                        {tag}
-                      </span>
+                      <span key={tag}>{tag}</span>
                     ))}
                   </div>
 

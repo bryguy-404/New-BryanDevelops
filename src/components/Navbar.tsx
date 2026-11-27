@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { ArrowRight, Blocks, MonitorSmartphone } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -13,9 +14,34 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { label: "Custom Software", href: "/services/software", desc: "Automation, AI & business tools" },
-  { label: "Web Development", href: "/services/web-development", desc: "Affordable websites on any platform" },
+  { label: "Custom Software", href: "/services/software", desc: "Automation, AI & business tools", icon: Blocks },
+  { label: "Web Development", href: "/services/web-development", desc: "Affordable websites on any platform", icon: MonitorSmartphone },
 ];
+
+const desktopLinkClass = (active: boolean) =>
+  `relative z-10 flex h-9 items-center gap-1.5 rounded-full px-3.5 text-sm transition-colors duration-200 ${
+    active ? "text-white font-semibold" : "text-neutral-400 font-medium hover:text-white"
+  }`;
+
+// The mark is inline so its two letters can react to hover.
+function LogoMark() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="50 55 1152 1152" aria-hidden="true">
+      <path
+        className="logo-d"
+        fill="#FFFFFF"
+        fillRule="evenodd"
+        d="M885 570V478C885 413 935 362 1000 362S1113 413 1113 478V855C1113 1021 969 1155 782 1155C600 1155 458 1036 458 869C458 700 624 562 805 562C834 562 862 565 885 570ZM909 837C909 904 855 958 789 958S669 904 669 837S723 715 790 715S909 770 909 837Z"
+      />
+      <path
+        className="logo-b"
+        fill="#5000FF"
+        fillRule="evenodd"
+        d="M138 233C138 163 187 109 255 109C321 109 369 162 369 227V296C390 292 409 289 427 289C581 289 706 412 706 567C706 735 562 869 395 869C250 869 138 767 138 624ZM521 573C521 637 471 688 410 688S300 637 300 573S349 457 411 457S521 509 521 573Z"
+      />
+    </svg>
+  );
+}
 
 export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light" }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -25,6 +51,24 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+  // Hover highlight that glides between the desktop nav links.
+  const [glider, setGlider] = useState({ left: 0, width: 0, visible: false, slide: false });
+
+  const showGlider = (event: React.SyntheticEvent<HTMLElement>) => {
+    const links = linksRef.current;
+    if (!links) return;
+    const bounds = links.getBoundingClientRect();
+    const target = event.currentTarget.getBoundingClientRect();
+    setGlider((current) => ({
+      left: target.left - bounds.left,
+      width: target.width,
+      visible: true,
+      slide: current.visible,
+    }));
+  };
+
+  const hideGlider = () => setGlider((current) => ({ ...current, visible: false }));
 
   useEffect(() => {
     const header = headerRef.current;
@@ -38,9 +82,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
       const distance = document.documentElement.scrollHeight - window.innerHeight;
       const t = reducedMotion.matches ? Number(offset >= 100) : Math.min(offset / 160, 1);
       const amount = t * t * (3 - 2 * t);
-      header.style.setProperty("--header-height", (113 - 41 * amount) + "px");
-      header.style.setProperty("--logo-scale", String(1 - 0.24 * amount));
-      header.style.setProperty("--header-opacity", String(1 - 0.25 * amount));
+      header.style.setProperty("--header-t", String(amount));
       header.style.setProperty("--reading-progress", String(distance > 0 ? Math.min(offset / distance, 1) : 0));
     };
 
@@ -69,7 +111,14 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setDrawerOpen(false);
+    };
+    if (drawerOpen) window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
   }, [drawerOpen]);
 
   useEffect(() => {
@@ -98,141 +147,187 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
     <>
       <nav
         ref={headerRef}
-        className="site-header fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 backdrop-blur-lg border-b border-white/10"
+        aria-label="Main"
+        className="site-header pointer-events-none fixed inset-x-0 z-50"
       >
-        <Link href="/" className="site-header-logo flex items-center">
-          <Image
-            src="/bryan-develops.svg"
-            alt="Bryan Develops"
-            width={80}
-            height={80}
-            className="size-20 p-2 lg:p-1 object-contain"
-          />
-        </Link>
+        {/* The bar itself. It tightens into a floating capsule as the page scrolls. */}
+        <div className="site-header-plate" aria-hidden="true">
+          <span className="site-header-progress" />
+        </div>
 
-        {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {/* Home */}
+        <div className="site-header-inner pointer-events-none relative mx-auto flex h-full max-w-7xl items-center">
           <Link
             href="/"
-            className={`relative flex items-center gap-1.5 text-sm font-medium transition-colors ${
-              isActive("/") ? "text-white font-semibold" : "text-neutral-400 hover:text-white"
-            }`}
+            aria-label="Bryan Develops"
+            className="site-header-logo pointer-events-auto shrink-0 lg:-ml-2.5"
           >
-            {isActive("/") && <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />}
-            Home
+            <LogoMark />
           </Link>
 
-          {/* Services Dropdown */}
+          {/* Desktop nav links, grouped beside the logo */}
           <div
-            ref={dropdownRef}
-            className="relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            ref={linksRef}
+            className="pointer-events-auto relative ml-5 hidden h-full items-center md:flex lg:ml-8"
+            onMouseLeave={hideGlider}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) hideGlider();
+            }}
           >
-            <button
-              className={`relative flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                isServicesActive ? "text-white font-semibold" : "text-neutral-400 hover:text-white"
-              }`}
-            >
-              {isServicesActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />}
-              Services
-              <svg
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+            <span
+              aria-hidden="true"
+              className="nav-glider"
+              style={{
+                width: glider.width,
+                opacity: glider.visible ? 1 : 0,
+                transform: `translateX(${glider.left}px)`,
+                transitionProperty: glider.slide ? "transform, width, opacity" : "opacity",
+              }}
+            />
 
-            <div
-              className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
-                servicesOpen
-                  ? "opacity-100 translate-y-0 pointer-events-auto"
-                  : "opacity-0 -translate-y-2 pointer-events-none"
-              }`}
+            <Link
+              href="/"
+              onMouseEnter={showGlider}
+              onFocus={showGlider}
+              className={desktopLinkClass(isActive("/"))}
             >
-              <div className="w-72 rounded-xl bg-neutral-900 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden">
-                <div className="p-2">
-                  {serviceLinks.map((svc) => (
+              {isActive("/") && <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />}
+              Home
+            </Link>
+
+            {/* Services Dropdown */}
+            <div
+              ref={dropdownRef}
+              className="relative flex h-full items-center"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget)) setServicesOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setServicesOpen(false);
+              }}
+            >
+              <button
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={servicesOpen}
+                onClick={(e) => setServicesOpen((open) => (e.detail === 0 ? !open : true))}
+                onMouseEnter={showGlider}
+                onFocus={showGlider}
+                className={desktopLinkClass(isServicesActive)}
+              >
+                {isServicesActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />}
+                Services
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <div
+                className={`absolute left-0 top-full -ml-3 origin-top-left pt-2.5 transition-all duration-200 ease-out ${
+                  servicesOpen
+                    ? "visible opacity-100 translate-y-0 scale-100 pointer-events-auto"
+                    : "invisible opacity-0 -translate-y-1.5 scale-[0.98] pointer-events-none"
+                }`}
+              >
+                <div className="w-80 overflow-hidden rounded-2xl border border-white/[0.14] bg-[#101017]/95 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+                  <div className="p-2">
+                    {serviceLinks.map((svc) => (
+                      <Link
+                        key={svc.href}
+                        href={svc.href}
+                        className={`group/svc flex items-center gap-3 rounded-xl px-3 py-3 transition-colors ${
+                          isActive(svc.href)
+                            ? "bg-indigo-500/10 text-white"
+                            : "text-neutral-300 hover:bg-white/[0.06] hover:text-white"
+                        }`}
+                      >
+                        <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-[#a594ff] transition-colors group-hover/svc:border-[#8b76ff]/40 group-hover/svc:bg-[#5000ff]/25 group-hover/svc:text-white">
+                          <svc.icon className="size-[18px]" aria-hidden="true" />
+                        </span>
+                        <span className="flex min-w-0 flex-col gap-0.5">
+                          <span className="text-sm font-medium">{svc.label}</span>
+                          <span className="text-[11px] text-neutral-500">{svc.desc}</span>
+                        </span>
+                        <ArrowRight
+                          className="ml-auto size-4 shrink-0 -translate-x-1 text-neutral-500 opacity-0 transition-all duration-200 group-hover/svc:translate-x-0 group-hover/svc:opacity-100"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="border-t border-white/[0.06] p-2">
                     <Link
-                      key={svc.href}
-                      href={svc.href}
-                      className={`flex flex-col gap-0.5 px-4 py-3 rounded-lg transition-colors ${
-                        isActive(svc.href)
-                          ? "bg-indigo-500/10 text-white"
-                          : "text-neutral-300 hover:bg-white/[0.06] hover:text-white"
-                      }`}
+                      href="/services"
+                      className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors text-xs font-medium"
                     >
-                      <span className="text-sm font-medium">{svc.label}</span>
-                      <span className="text-[11px] text-neutral-500">{svc.desc}</span>
+                      View all services
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                      </svg>
                     </Link>
-                  ))}
-                </div>
-                <div className="border-t border-white/[0.06] p-2">
-                  <Link
-                    href="/services"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors text-xs font-medium"
-                  >
-                    View all services
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Other nav links */}
+            {navLinks.filter(l => l.label !== "Home" && l.label !== "Contact").map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onMouseEnter={showGlider}
+                  onFocus={showGlider}
+                  className={desktopLinkClass(active)}
+                >
+                  {active && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                  )}
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
-          {/* Other nav links */}
-          {navLinks.filter(l => l.label !== "Home" && l.label !== "Contact").map((link) => {
-            const active = isActive(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                  active ? "text-white font-semibold" : "text-neutral-400 hover:text-white"
-                }`}
-              >
-                {active && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                )}
-                {link.label}
-              </Link>
-            );
-          })}
+          {/* Desktop actions */}
+          <div className="pointer-events-auto ml-auto hidden items-center gap-3 md:flex lg:gap-4">
+            <Link href="/contact" className="header-cta group">
+              <span>Get Started</span>
+              <ArrowRight
+                className="size-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
 
-          <Link
-            href="/contact"
-            className="px-5 py-2 rounded-full text-sm font-medium transition-all bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white"
-          >
-            Get Started
-          </Link>
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="group flex flex-col items-end justify-center w-9 h-9 px-2 gap-1.5 rounded-lg transition-colors hover:bg-white/10"
+              aria-label="Open info panel"
+            >
+              <span className="block w-5 h-[2px] rounded-full bg-white" />
+              <span className="block w-5 h-[2px] rounded-full bg-white" />
+              <span className="block w-3 h-[2px] rounded-full bg-white transition-all duration-200 group-hover:w-5" />
+            </button>
+          </div>
 
+          {/* Mobile hamburger */}
           <button
             onClick={() => setDrawerOpen(true)}
-            className="flex flex-col items-center justify-center w-9 h-9 gap-1.5 rounded-lg transition-colors hover:bg-white/10"
-            aria-label="Open info panel"
+            className="pointer-events-auto ml-auto md:hidden flex flex-col items-end justify-center w-9 h-9 px-2 gap-1.5 rounded-lg transition-colors hover:bg-white/10"
+            aria-label="Open menu"
           >
             <span className="block w-5 h-[2px] rounded-full bg-white" />
             <span className="block w-5 h-[2px] rounded-full bg-white" />
-            <span className="block w-3.5 h-[2px] rounded-full bg-white" />
+            <span className="block w-3 h-[2px] rounded-full bg-white" />
           </button>
         </div>
-
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setDrawerOpen(true)}
-          className="md:hidden flex flex-col items-center justify-center w-9 h-9 gap-1.5 rounded-lg transition-colors hover:bg-white/10"
-          aria-label="Open menu"
-        >
-          <span className="block w-5 h-[2px] rounded-full bg-white" />
-          <span className="block w-5 h-[2px] rounded-full bg-white" />
-          <span className="block w-3.5 h-[2px] rounded-full bg-white" />
-        </button>
       </nav>
 
       {/* Overlay */}
@@ -243,10 +338,12 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
         onClick={() => setDrawerOpen(false)}
       />
 
-      {/* Sidebar Drawer */}
+      {/* Side menu: a floating card, detached from the screen edge like the scrolled header */}
       <aside
-        className={`fixed top-0 right-0 z-[70] h-full w-[85vw] max-w-sm bg-white shadow-[-8px_0_30px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-out flex flex-col overflow-y-auto ${
-          drawerOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-y-3 right-3 z-[70] w-[85vw] max-w-sm rounded-[28px] bg-white ring-1 ring-black/5 shadow-[0_24px_70px_-12px_rgba(0,0,0,0.55)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col overflow-y-auto ${
+          drawerOpen
+            ? "visible translate-x-0 opacity-100"
+            : "invisible translate-x-[calc(100%+1.5rem)] opacity-0"
         }`}
       >
         {/* Close button */}
@@ -398,13 +495,29 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
         <div className="hidden md:block px-7 pt-6">
           <div className="border-t border-neutral-100 pt-6">
             <h4 className="text-neutral-900 font-semibold text-sm tracking-wide mb-3">Services</h4>
-            <div className="flex flex-wrap gap-2">
-              {["Web Design", "Custom Software", "App Development", "AI Tools", "Branding"].map((s) => (
-                <span key={s} className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200/60">
-                  {s}
-                </span>
+            <div className="-mx-3 flex flex-col">
+              {serviceLinks.map((svc) => (
+                <Link
+                  key={svc.href}
+                  href={svc.href}
+                  onClick={() => setDrawerOpen(false)}
+                  className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-neutral-50"
+                >
+                  <span className="icon-tile">
+                    <svc.icon aria-hidden="true" />
+                  </span>
+                  <span className="flex min-w-0 flex-col">
+                    <span className="text-sm font-medium text-neutral-900">{svc.label}</span>
+                    <span className="text-xs text-neutral-500">{svc.desc}</span>
+                  </span>
+                  <ArrowRight
+                    className="ml-auto size-4 shrink-0 text-neutral-300 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#5000ff]"
+                    aria-hidden="true"
+                  />
+                </Link>
               ))}
             </div>
+            <p className="mt-3 text-xs text-neutral-500">Also app development, AI tools, and branding.</p>
           </div>
         </div>
 

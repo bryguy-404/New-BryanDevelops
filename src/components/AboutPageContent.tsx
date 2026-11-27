@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FloatingDots from "./CursorDots";
 import FadeIn from "./FadeIn";
+import { MapPin } from "lucide-react";
 
 const workValues = [
   {
@@ -70,6 +71,13 @@ const nerds = [
   "UI/UX Design",
 ];
 
+// Two per line, so the list reads like a short array in an editor.
+const nerdRows = nerds.reduce<string[][]>((rows, item, i) => {
+  if (i % 2 === 0) rows.push([item]);
+  else rows[rows.length - 1].push(item);
+  return rows;
+}, []);
+
 export default function AboutPageContent() {
   return (
     <main className="relative overflow-hidden">
@@ -84,10 +92,10 @@ export default function AboutPageContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeIn>
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                  <span className="text-indigo-600 text-xs font-semibold tracking-wider uppercase">South Bend, Indiana</span>
-                </div>
+                <p className="flex items-center gap-2 text-indigo-600 text-sm font-semibold tracking-widest uppercase mb-5">
+                  <MapPin className="size-4" aria-hidden="true" />
+                  South Bend, Indiana
+                </p>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 tracking-tight leading-[1.1] mb-6">
                   Hey, I&apos;m{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
@@ -167,14 +175,14 @@ export default function AboutPageContent() {
             </FadeIn>
 
             <FadeIn delay={200}>
-              <div className="relative rounded-2xl bg-white border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] p-8">
+              <div className="relative rounded-[1.25rem] bg-white border border-neutral-200 p-8">
                 <h3 className="text-neutral-900 text-lg font-bold mb-6">
                   A Few Things About Me
                 </h3>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 shrink-0 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="icon-tile">
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
@@ -185,8 +193,8 @@ export default function AboutPageContent() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 shrink-0 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="icon-tile">
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
@@ -196,8 +204,8 @@ export default function AboutPageContent() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 shrink-0 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="icon-tile">
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                       </svg>
                     </div>
@@ -207,8 +215,8 @@ export default function AboutPageContent() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 shrink-0 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="icon-tile">
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
                     </div>
@@ -244,11 +252,16 @@ export default function AboutPageContent() {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Two wide cards over three, the same arrangement as the home page services */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5">
             {workValues.map((val, i) => (
-              <FadeIn key={val.title} delay={(i % 3) * 100}>
-                <div className="relative p-7 rounded-2xl bg-white border border-neutral-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 h-full group">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-5 text-indigo-600 group-hover:scale-110 transition-transform">
+              <FadeIn
+                key={val.title}
+                delay={(i < 2 ? i : i - 2) * 100}
+                className={i < 2 ? "lg:col-span-3" : i === 4 ? "sm:col-span-2 lg:col-span-2" : "lg:col-span-2"}
+              >
+                <div className="card-light p-7 h-full">
+                  <div className="icon-tile mb-5">
                     {val.icon}
                   </div>
                   <h3 className="text-neutral-900 text-lg font-bold mb-2">{val.title}</h3>
@@ -303,20 +316,31 @@ export default function AboutPageContent() {
             </FadeIn>
 
             <FadeIn delay={200}>
-              <div className="relative rounded-2xl bg-white border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] p-8">
-                <h3 className="text-neutral-900 text-lg font-bold mb-5">
-                  Things I Nerd Out About
-                </h3>
-                <div className="flex flex-wrap gap-2.5">
-                  {nerds.map((item) => (
-                    <span
-                      key={item}
-                      className="px-4 py-2 text-sm font-medium rounded-full bg-neutral-50 border border-neutral-200 text-neutral-700 hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-700 transition-colors cursor-default"
-                    >
-                      {item}
-                    </span>
-                  ))}
+              <div className="card-dark overflow-hidden">
+                <h3 className="sr-only">Things I Nerd Out About</h3>
+                <div className="window-bar px-4 py-3">
+                  <span className="window-dots" aria-hidden="true"><i /><i /><i /></span>
+                  <span className="font-code text-xs">nerdy-side.ts</span>
                 </div>
+                <pre className="font-code overflow-x-auto p-5 sm:p-6 text-[13px] leading-7 text-neutral-300">
+                  <code>
+                    <span className="text-neutral-500">{"// Things I nerd out about"}</span>
+                    {"\n"}
+                    <span className="text-[#a594ff]">const</span> interests = [{"\n"}
+                    {nerdRows.map((row) => (
+                      <span key={row[0]}>
+                        {"  "}
+                        {row.map((item) => (
+                          <span key={item}>
+                            <span className="text-emerald-300">&quot;{item}&quot;</span>,{" "}
+                          </span>
+                        ))}
+                        {"\n"}
+                      </span>
+                    ))}
+                    ];
+                  </code>
+                </pre>
               </div>
             </FadeIn>
           </div>
@@ -344,13 +368,13 @@ export default function AboutPageContent() {
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-indigo-700 hover:to-purple-700 transition-all active:scale-[0.98] shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
+                  className="header-cta is-large"
                 >
                   Let&apos;s Talk
                 </Link>
                 <Link
                   href="/projects"
-                  className="px-8 py-4 rounded-full border border-neutral-300 text-neutral-700 font-semibold text-sm tracking-wide hover:bg-neutral-100 transition-all"
+                  className="inline-flex h-[3.25rem] items-center px-7 rounded-full border border-neutral-300 text-neutral-700 font-semibold text-[0.9375rem] hover:bg-neutral-100 transition-colors"
                 >
                   See My Work
                 </Link>

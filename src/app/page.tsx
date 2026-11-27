@@ -1,9 +1,29 @@
+import type { CSSProperties } from "react";
 import OperatorDisclosure from "@/components/OperatorDisclosure";
 import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Navbar from "@/components/Navbar";
 import FadeIn from "@/components/FadeIn";
 import FAQSection from "@/components/FAQSection";
+
+const processSteps = [
+  {
+    title: "Strategy",
+    desc: "I analyze your competition and target audience to uncover what works. Using insights to craft a custom strategy.",
+  },
+  {
+    title: "Design",
+    desc: "From color schemes to layouts, bringing your brand to life with a custom design unique to your business.",
+  },
+  {
+    title: "Develop",
+    desc: "Building your site on a dev server, giving you live access to see your vision come to life every step.",
+  },
+  {
+    title: "Support",
+    desc: "Launch with confidence. I'll be here to ensure your website stays fast, secure, and running smoothly.",
+  },
+];
 
 export default function Home() {
   return (
@@ -38,8 +58,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
             <FadeIn delay={0} className="lg:col-span-3">
-            <div className="p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group h-full">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="card-light p-8 h-full">
+              <div className="icon-tile mb-6">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">Web Design</h3>
@@ -50,8 +70,8 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={100} className="lg:col-span-3">
-            <div className="p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group h-full">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="card-light p-8 h-full">
+              <div className="icon-tile mb-6">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">App & Software Development</h3>
@@ -62,8 +82,8 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={0} className="lg:col-span-2">
-            <div className="p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group h-full">
-              <div className="w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="card-light p-8 h-full">
+              <div className="icon-tile mb-6">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">Technical Support</h3>
@@ -74,8 +94,8 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={100} className="lg:col-span-2">
-            <div className="p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group h-full">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="card-light p-8 h-full">
+              <div className="icon-tile mb-6">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">WP Maintenance</h3>
@@ -86,8 +106,8 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={200} className="md:col-span-2 lg:col-span-2">
-            <div className="p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group h-full">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="card-light p-8 h-full">
+              <div className="icon-tile mb-6">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">Branding</h3>
@@ -125,47 +145,19 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <FadeIn delay={0}>
-            <div className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-all group h-full">
-              <div className="text-5xl font-black text-white/10 absolute top-6 right-6 group-hover:text-white/20 transition-colors">01</div>
-              <h3 className="text-2xl font-bold text-white mb-4 mt-8">Strategy</h3>
-              <p className="text-neutral-400 leading-relaxed">
-                I analyze your competition and target audience to uncover what works. Using insights to craft a custom strategy.
-              </p>
-            </div>
-            </FadeIn>
-
-            <FadeIn delay={100}>
-            <div className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-all group h-full">
-              <div className="text-5xl font-black text-white/10 absolute top-6 right-6 group-hover:text-white/20 transition-colors">02</div>
-              <h3 className="text-2xl font-bold text-white mb-4 mt-8">Design</h3>
-              <p className="text-neutral-400 leading-relaxed">
-                From color schemes to layouts, bringing your brand to life with a custom design unique to your business.
-              </p>
-            </div>
-            </FadeIn>
-
-            <FadeIn delay={200}>
-            <div className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-all group h-full">
-              <div className="text-5xl font-black text-white/10 absolute top-6 right-6 group-hover:text-white/20 transition-colors">03</div>
-              <h3 className="text-2xl font-bold text-white mb-4 mt-8">Develop</h3>
-              <p className="text-neutral-400 leading-relaxed">
-                Building your site on a dev server, giving you live access to see your vision come to life every step.
-              </p>
-            </div>
-            </FadeIn>
-
-            <FadeIn delay={300}>
-            <div className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-all group h-full">
-              <div className="text-5xl font-black text-white/10 absolute top-6 right-6 group-hover:text-white/20 transition-colors">04</div>
-              <h3 className="text-2xl font-bold text-white mb-4 mt-8">Support</h3>
-              <p className="text-neutral-400 leading-relaxed">
-                Launch with confidence. I&apos;ll be here to ensure your website stays fast, secure, and running smoothly.
-              </p>
-            </div>
-            </FadeIn>
-          </div>
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12">
+            {processSteps.map((step, i) => (
+              <li
+                key={step.title}
+                className="process-step pt-8 pr-8"
+                style={{ "--step": i } as CSSProperties}
+              >
+                <p className="font-code text-xs text-[#a594ff] mb-3">Step {i + 1}</p>
+                <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-neutral-400 leading-relaxed">{step.desc}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

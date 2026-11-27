@@ -24,6 +24,44 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+
+    const updateHeader = () => {
+      frame = 0;
+      const offset = Math.max(0, window.scrollY);
+      const distance = document.documentElement.scrollHeight - window.innerHeight;
+      const t = reducedMotion.matches ? Number(offset >= 100) : Math.min(offset / 160, 1);
+      const amount = t * t * (3 - 2 * t);
+      header.style.setProperty("--header-height", (113 - 41 * amount) + "px");
+      header.style.setProperty("--logo-scale", String(1 - 0.24 * amount));
+      header.style.setProperty("--header-opacity", String(1 - 0.25 * amount));
+      header.style.setProperty("--reading-progress", String(distance > 0 ? Math.min(offset / distance, 1) : 0));
+    };
+
+    function scheduleUpdate() {
+      if (!frame) frame = window.requestAnimationFrame(updateHeader);
+    }
+
+    const observer = new ResizeObserver(scheduleUpdate);
+    observer.observe(document.body);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    reducedMotion.addEventListener("change", scheduleUpdate);
+    updateHeader();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      reducedMotion.removeEventListener("change", scheduleUpdate);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     if (drawerOpen) {
@@ -59,15 +97,16 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-12 transition-colors bg-black backdrop-blur-lg border-b border-white/10"
+        ref={headerRef}
+        className="site-header fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 backdrop-blur-lg border-b border-white/10"
       >
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="site-header-logo flex items-center">
           <Image
-            src="/Bryan-Develops-logo-2.png"
+            src="/bryan-develops.svg"
             alt="Bryan Develops"
-            width={280}
-            height={72}
-            className="h-20 w-auto object-contain object-left"
+            width={80}
+            height={80}
+            className="size-20 p-2 lg:p-1 object-contain"
           />
         </Link>
 
@@ -227,11 +266,11 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
         <div className="px-7 mb-6">
           <div className="flex items-center mb-4">
             <Image
-              src="/Bryan-Develops-logo-2.png"
+              src="/bryan-develops-light.svg"
               alt="Bryan Develops"
-              width={280}
-              height={72}
-              className="h-20 w-auto object-contain object-left invert"
+              width={80}
+              height={80}
+              className="size-20 p-2 object-contain"
             />
           </div>
           <p className="text-neutral-500 text-sm leading-relaxed">

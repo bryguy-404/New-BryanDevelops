@@ -84,3 +84,34 @@ body:has(#analytics-preferences) .sa-widget-container {
 #solutions, #project-fit, #process {
   scroll-margin-top: 7rem;
 }
+
+.site-header {
+  height: var(--header-height, 113px);
+  background-color: rgb(5 5 10 / var(--header-opacity, 1));
+}
+
+.site-header-logo {
+  transform: scale(var(--logo-scale, 1));
+  transform-origin: left center;
+}
+
+@media (min-width: 64rem) {
+  .site-header-logo {
+    margin-inline-start: max(24px, calc((100vw - 80rem) / 2 - 10px));
+  }
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: #8b76ff;
+  transform: scaleX(var(--reading-progress, 0));
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header::after { display: none; }
+}
